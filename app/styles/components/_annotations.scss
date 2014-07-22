@@ -1,0 +1,39 @@
+/* MAIN CONTENT style sheet
+
+This stylesheet addresses the annotations content (user comments/ojections/marked passages),
+and related media queries.
+
+*/
+
+.annotations {
+  .annotation {
+    position:absolute;
+    right:10px;
+    height: 100px;
+    max-height:500px;
+    padding:10px 10px 0 10px;
+    overflow: hidden;
+    cursor:pointer;
+    @include transition(5ms);
+    
+    .glyphicon {
+      float: left; 
+      margin-right:5px;
+    }
+    
+    .extra-pop {
+      display:none;
+    }
+
+    h5 {
+      margin-top:0;
+    }
+
+    &.expanded {
+      background:#eee;
+      height:auto;
+      @include box-shadow(4px, 2px, 2px, rgba(0,0,0,0.2));
+    }
+
+  }
+}

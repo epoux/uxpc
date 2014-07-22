@@ -1,0 +1,113 @@
+/* BASE style sheet
+
+This stylesheet addresses the overall layout of the body and main container,
+as well as general styles and typography
+
+*/
+
+body {
+  background:$light-grey;
+  position: fixed;
+  overflow:hidden;
+  width:100%;
+  height:100%;
+}
+
+/* --------- General ------- */
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.glyphicon {
+  top:2px; /* improves the default spacing a little */
+}
+
+/* --------- Colours ------- */
+
+.light-grey {
+  color:$light-grey;
+}
+
+.mid-grey {
+  color:$mid-grey;
+}
+
+.dark-grey {
+  color:$dark-grey;
+}
+
+/* --------- Typography ------- */
+
+.smaller {
+  font-size:$smaller;
+}
+
+.caps {
+  text-transform:uppercase;
+}
+
+/* --------- layout ----------- */
+
+/* main wrapper */
+.container-main {
+  margin:0 auto;
+  background: $white;
+  height:$window-height;
+
+  .screen-one {
+    padding:10px 0;
+  }
+  .screen-two {
+    display: none;
+  }
+
+}
+
+/* --------- General interaction classes ----------- */
+
+.visible {
+  display:block;
+}
+
+.hidden {
+  display:none;
+}
+
+.popover {
+  &.wide {
+    max-width:1500px;
+  }
+}
+
+/* --------- Media Query ----------- */
+
+@media screen and (min-width: 768px) {
+
+  body {
+    padding-left:10px; /* nudged to balance the different sidebar widths */
+  }
+
+  .container-main {
+    width:$container-main-width;
+    max-width:$container-single-view-max-width; /* constraining the max viewable area for accessibility */
+
+    &.dual-screen {
+      /* everything inside here modifies the dual screen view */
+      width: $container-main-width + 10%;
+      max-width: $container-dual-view-max-width;
+    }
+  }
+
+  /* Remove the padding set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}

@@ -1,0 +1,24 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+// bower:scss
+@import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+//custom mixins, variables and functions
+@import "global/custom-variables";
+@import "global/custom-functions";
+@import "global/custom-mixins";
+
+//base style sheet
+@import "global/base";
+
+//components
+@import "components/annotations";
+@import "components/helpers";
+@import "components/highlights-annotations";
+@import "components/main-content";
+@import "components/main-navigation";
+@import "components/related-content";
+@import "components/secondary-content";
+@import "components/title-filters";
+@import "components/on-object-menu";

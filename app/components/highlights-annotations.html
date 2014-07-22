@@ -1,0 +1,78 @@
+<div class="highlights vertical" id="highlights">
+	
+    <p class="column-title small">Highlights</p>
+
+    <form name="highlight-choices" class="highlight-choices" action="">
+        <span class="highlight-checkbox"><input type="checkbox" class="checkbox-orange"></span>
+        <span class="highlight-checkbox"><input type="checkbox" class="checkbox-green"></span>
+        <span class="highlight-checkbox"><input type="checkbox" class="checkbox-blue"></span>
+        <span class="highlight-checkbox"><input type="checkbox" class="checkbox-purple"></span>
+    </form>
+
+    <ul class="swatches">
+        <li class="orange" style="width:25%;"></li>
+        <li class="green" style="width:25%;"></li>
+        <li class="blue" style="width:25%;"></li>
+        <li class="purple" style="width:25%;"></li>
+    </ul>
+    
+    <div class="panel highlights-filter" id="Claims">       
+    	<a data-toggle="collapse" data-parent="#highlights" data-target="#panel-claims">Claims</a>						  	
+        <div id="panel-claims" class="collapse in">
+            <div class="viewer"></div>
+        	<div style="height:600px;"></div>
+        </div><!-- /.claims -->
+    </div><!-- /.highlights-filter -->
+    
+    <div class="panel highlights-filter" id="Figures">
+    	<a data-toggle="collapse" data-parent="#highlights" data-target="#panel-figures">Figures</a>						  	
+        <div id="panel-figures" class="collapse">
+        	<img src="images/doc-image-1.jpg">
+        	<img src="images/doc-image-1.jpg">
+        	<img src="images/doc-image-1.jpg">
+        	<img src="images/doc-image-1.jpg">
+        	<img src="images/doc-image-1.jpg">
+        </div><!-- /.claims -->
+    </div>
+    
+    <div class="panel highlights-filter" id="Description">
+    	<a data-toggle="collapse" data-parent="#highlights" data-target="#panel-description">Description</a>						  	
+        <div id="panel-description" class="collapse">
+        	<img src="images/treeview.jpg">
+        </div><!-- /.claims -->
+    </div>
+                           
+</div><!-- /.highlights -->
+<div class="annotations vertical">
+    <div class="dropdown">
+        <a href="#" class="dropdown-toggle column-title small" data-toggle="dropdown">All txt <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+        	<li role="presentation" class="dropdown-header">Show all text</li>
+            <li><a href="#">Only text with annotations</a></li>
+            <li class="divider"></li>
+            <li role="presentation" class="dropdown-header">Show only</li>
+            <li><a href="#">Novelty objections</a></li>
+            <li><a href="#">Clarity objections</a></li>
+            <li><a href="#">Non-unity objections</a></li>
+            <li><a href="#">Marked and commented passages</a></li>
+        </ul>
+    </div><!-- /* dropdown -->
+    <div class="markers" style="position:relative;">
+        <a style="position:absolute; top:300px; left:40%;" href="#" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." >
+            <span class="glyphicon glyphicon-flash"></span>
+        </a>
+        <a style="position:absolute; top:500px; left:40%;"
+           href="#"
+           data-container="body"
+           data-toggle="popover"
+           data-placement="right"
+           data-original-title="Comment on P52"
+           data-content="A comment about the wireless circuitry that receives signals from/to communications networks and other communications browsing of documents devices.">
+            <span class="glyphicon glyphicon-comment"></span>
+        </a>
+        <a style="position:absolute; top:600px; left:40%;" href="#" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." >
+            <span class="glyphicon glyphicon-pencil"></span>
+        </a>
+    </div>
+
+</div><!-- /* annotations -->

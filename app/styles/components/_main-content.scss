@@ -1,0 +1,133 @@
+/* MAIN CONTENT style sheet
+
+This stylesheet addresses the main content (document view) styles,
+aand related media queries.
+
+*/
+
+.content-main-wrapper { /* document view */
+  $topgutter: 15%;
+  height:$window-height - $topgutter;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+/* Main area */
+.document-area {
+  float:left;
+  position:relative;
+  height:100%;
+
+  .navbar {
+    &:first-child {
+      color: $dark-grey;
+      border-bottom: 1px solid $light-grey;
+      @include border-radius(0px);
+    }
+  }
+
+}
+
+/* Secondary screen */
+.content-secondary-wrapper {
+  height:100%;
+}
+
+/* Collapsible content – main view */
+.claim-wrapper {
+  
+  &>a {
+    display:block;
+    width:100%;
+    background:$mid-grey;
+    color:$black;
+    padding:5px;
+    margin-bottom:8px;
+    cursor:pointer;
+    @include border-radius (2px);
+    
+    .claim-number {
+      background:$white;
+      font-size:10px;
+      padding:2px;
+      margin-right:5px;
+      text-align:center;
+      width:18px;
+      display:block;
+      float:left;
+      @include border-radius (4px);
+    }
+    
+  }
+  
+}
+
+
+/* --- Media Queries --- */
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container-main {
+
+    /* Main area */
+    .document-area {
+      float:left;
+      width:82%;
+      height:100%;
+    }
+
+    &.dual-screen { /* everything inside here modifies the dual screen view */
+
+      .screen-one {
+        float:left;
+        width:60%;
+        .annotations {
+          .annotation {
+            span {
+              float:right;
+            }
+            h5, p {
+              display: none;
+            }
+          }
+        }
+        .secondary-content {
+          display: none;
+        }
+      }
+
+      .screen-two {
+        float:left;
+        display: block;
+        width:40%;
+        height:100%;
+        background:#dedede;
+
+        header {
+          float: left;
+          width: 100%;
+          margin-bottom:10px;
+          h5 {
+            float:left;
+            padding: 5px 0 0 60px;
+          }
+          button.close {
+            display: block;
+            padding:15px 15px 0 0;
+          }
+        }
+
+        .comms {
+          float: left;
+          background: white;
+          height: 100%;
+          width: 95%; /* This will vary depending on final grid/width */
+          margin: 0 15px 15px 15px;
+        }
+
+      }
+
+    }
+
+  }
+}

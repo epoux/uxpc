@@ -1,0 +1,53 @@
+/* SECONDARY CONTENT (CONTEXTUAL) style sheet
+
+This stylesheet addresses the 'secondary content' styles,
+as well as general styles and typography
+
+*/
+
+.contextual {
+  position:absolute;
+  z-index:0;
+  right:-65px;
+  top:0;
+
+  .btn-group-vertical {
+
+    ul {
+      &.push-right {
+        left:-65px;
+        .glyphicon {
+          color: $dark-grey;
+          margin-right:5px;
+        }
+      }
+    }
+
+    button {
+      color: $dark-grey;
+      a, b {
+        color: $dark-grey;
+      }
+    }
+  }
+
+  .secondary-content {
+    margin-top:5px;
+  }
+
+}
+
+/* --- Media Queries --- */
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container-main {
+    &.dual-screen {
+      /* everything inside here modifies the dual screen view */
+      .contextual {
+        right: -60px;
+        bottom: 5px;
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+/* TITLES AND FILTERS style sheet
+
+This stylesheet addresses the title and filters styles (fixed top of document view),
+along with associated media queries.
+
+*/
+
+/* Document view header (titles and filters) */
+.header {
+  $fixed-nav-height: 30px;
+  padding-bottom:10px;
+
+  .dropdown-filter-group {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    z-index: 20;
+    background: #fff;
+    padding: 15px;
+
+    &.visible {
+      display:block;
+      @include transition(4s);
+    }
+
+    .btn-group {
+      margin-left:20px;
+      margin-right:5px;
+
+      &:first-child {
+        margin-left:0;
+      }
+
+    }
+
+  }
+
+  .navbar {
+    margin-bottom:10px;
+    min-height:$fixed-nav-height + 10px;
+
+    li {
+      a {
+        color: $dark-grey;
+        padding-top:5px;
+        padding-bottom:5px;
+      }
+    }
+
+    a.navbar-docnumber {
+      background: $light-grey;
+      padding:5px;
+      font-size: 12px;
+      color: $dark-grey;
+      line-height: $fixed-nav-height;
+      @include border-radius(2px);
+    }
+  }
+}
+

@@ -1,0 +1,31 @@
+// custom mixins
+
+
+//border-radius
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+//transitions
+@mixin transition($time) {
+  transition: all $time ease;
+  -webkit-transition: all $time ease;
+  -moz-transition: all $time ease;
+  -ms-transition: all $time ease;
+  -o-transition: all $time ease;
+}
+
+//box-shadow
+@mixin box-shadow($horizOffset, $vertOffset, $blur, $color) {
+
+  -webkit-box-shadow: $horizOffset $vertOffset $blur $color;
+  -moz-box-shadow: $horizOffset $vertOffset $blur $color;
+  -ms-box-shadow: $horizOffset $vertOffset $blur $color;
+  -o-box-shadow: $horizOffset $vertOffset $blur $color;
+  box-shadow: $horizOffset $vertOffset $blur $color;
+  border-collapse: separate;
+}
+
