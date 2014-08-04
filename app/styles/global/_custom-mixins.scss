@@ -1,5 +1,6 @@
 // custom mixins
 
+
 //border-radius
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -30,11 +31,11 @@
 
 //square numbers 
 @mixin square-number {
-  background: $white;
-  border: 2px solid $mid-grey;
-  width: 20px;
-  height: 20px;
-  display: block;
-  font-size: 10px;
-  text-align: center;
+  background:$white;
+  border:2px solid $mid-grey;
+  width:20px;
+  height:20px;
+  display:block;
+  font-size:10px;
+  text-align:center;
 }

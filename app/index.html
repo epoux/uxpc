@@ -46,26 +46,37 @@
         			<li><a href="#Item4">Map</a></li>
         			<li><a href="#Item3">more <span class="caret"></span></a></li>
         		</ul>
-                <div class="secondary dropdown" id="Item1">
+        		<div class="secondary dropdown" id="Item1">
         			<span>
-        				<small>Add as new search concept</small><br/>
-						<label class="search-term"><input type="checkbox" value="">Voice reading</label>
-					</span>
+        				<small>Add as new search concept</small><br />		
+						<label class="search-term"><input type="checkbox" value="" checked>Voice reading</label>
+						<span class="colour-picker">
+							<span class="caret"></span>
+							<ul>
+								<li class="light-orange">&nbsp;</li>
+								<li class="light-green">&nbsp;</li>
+								<li class="light-yellow">&nbsp;</li>
+								<li class="light-red">&nbsp;</li>
+								<li class="light-blue">&nbsp;</li>
+								<li class="light-purple">&nbsp;</li>
+							</ul>
+						</span><!-- /.colour-picker -->
+					</span><br />
 					<span>
-						<small>Or a synonym of:</small><br/>
-						<label style="background: #FFFDD0;"><input type="checkbox" value="">spoken query</label><br/>
-						<label style="background: #D0F0C0;"><input type="checkbox" value="">text-to-speech</label><br/>
-						<label style="background: #FADFAD;"><input type="checkbox" value="">audible information</label>
+						<small>Or a synonym of:</small><br />		
+						<label class="light-yellow"><input type="checkbox" value="">spoken query</label><br />
+						<label class="light-green"><input type="checkbox" value="">text-to-speech</label><br />
+						<label class="light-orange"><input type="checkbox" value="">audible information</label>
 					</span>
+					
 					<span>
 						<button class="btn btn-xs btn-primary btn-add">Add</button>
 						<button class="btn btn-xs btn-default">Cancel</button>
-					</span>
-                </div>
-                <!-- /#item1 -->
-                <div class="secondary" id="Item2">
-                    <small>Item 2</small>
-                </div>
+					</span>				
+        		</div><!-- /#item1 -->
+        		<div class="secondary" id="Item2">
+        			<small>Item 2</small>
+        		</div>     		
         	</div><!-- /.oo-menu -->
         	
         	
@@ -161,9 +172,9 @@
         <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
         <!-- endbuild -->
 
-        <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/jquery.highlight.js"></script>
-        <script src="scripts/main.js"></script>
+        <!-- build:js({app,.tmp}) scripts/main.js -->  
+        <script src="scripts/jquery.highlight.js"></script>  
+        <script src="scripts/main.js"></script>       
         <script src="scripts/pageload.js"></script>
         <!-- endbuild -->
 </body>

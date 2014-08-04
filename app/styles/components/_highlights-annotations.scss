@@ -13,42 +13,34 @@ along with associated media queries.
 
 .swatches {
 
-  margin: 0;
-  padding: 0;
+  margin:0;
+  padding:0;
 
   li {
     display: block;
-    float: left;
-    height: 10px;
+    float:left;
+    height:10px;
 
-    &.orange {
-      background: $orange;
-    }
-    &.blue {
-      background: $blue;
-    }
-    &.purple {
-      background: $purple;
-    }
-    &.green {
-      background: $green;
-    }
+    &.orange { background: $orange; }
+    &.blue { background: $blue; }
+    &.purple { background: $purple; }
+    &.green { background: $green; }
 
   }
 }
 
 .highlight-choices {
 
-  float: left;
-  display: block;
-  width: 100%;
-  margin-bottom: 5px;
+  float:left;
+  display:block;
+  width:100%;
+  margin-bottom:5px;
 
   .highlight-checkbox {
 
-    width: 25%;
+    width:25%;
     display: block;
-    float: left;
+    float:left;
     text-align: center;
 
   }
@@ -57,142 +49,112 @@ along with associated media queries.
 span[class*="highlight"] {
 
   color: white;
-  padding: 2px;
+  padding:2px;
   @include border-radius(2px);
 
 }
 
-.highlight-orange {
-  background: $orange
-}
-
-;
-.highlight-green {
-  background: $green
-}
-
-;
-.highlight-blue {
-  background: $blue
-}
-
-;
-.highlight-purple {
-  background: $purple
-}
-
-;
+.highlight-orange {background:$orange};
+.highlight-green {background:$green};
+.highlight-blue {background:$blue};
+.highlight-purple {background:$purple};
 
 .highlights-filter {
-
+  
   &.panel {
-    margin: 0;
+    margin:0;
     background-color: transparent;
     border: 0;
     box-shadow: none;
-
+    
     div[id^="panel"] {
-      float: left;
-      position: relative;
-      width: 100%;
-    }
-
-    .viewer {
-      /* this is the viewable document area in the VIN bar */
-      width: 100%;
-      position: absolute;
-      border: 4px solid $dark-grey;
-
-      &#viewer-claims {
-        height: 35px;
-        top: 0px;
+      float:left;
+      position:relative;
+      width:100%;
+    }   
+    
+    .viewer { /* this is the viewable document area in the VIN bar */
+      width:100%;   
+      position:absolute;
+      border:4px solid $dark-grey;
+           
+      &#viewer-claims { 
+        height:35px; top:0px; 
         &.expanded {
-          height: 250px;
+          height:250px;
         }
       }
-      &#viewer-figures {
-        height: 35px;
-        top: 275px;
-      }
-      &#viewer-descriptions {
-        height: 35px;
-        top: 500px;
-      }
-
+      &#viewer-figures { height:35px; top:275px; }
+      &#viewer-descriptions { height:35px; top:500px; }
+      
     }
-
+    
   }
-
+  
   a {
-    background: darken($mid-grey, 20%);
-    display: block;
-    float: left;
-    padding: 5px;
-    color: $white;
-    width: 100%;
-    cursor: pointer;
-    font-size: 12px;
-    margin-bottom: 1px;
+    background:darken($mid-grey, 20%);
+    display:block;
+    float:left;
+    padding:5px;
+    color:$white;
+    width:100%;
+    cursor:pointer;
+    font-size:12px;
+    margin-bottom:1px;
   }
-
+  
   #panel-figures {
     img {
-      width: 80px;
-      margin: 5px 15px;
+      width:80px;
+      margin:5px 15px;
     }
   }
 }
 
 .tree {
-  & > ul {
-    list-style: none;
-    padding-left: 0;
-    background: none;
-    float: left;
-    margin: 8px 0 20px 0;
+  &>ul {
+    list-style:none;
+    padding-left:0;
+    background:none;
+    float:left;
+    margin:8px 0 20px 0;
   }
-  ul {
-    li {
-      @include border-radius(4px);
-      padding-left: 10px;
+  ul {    
+    li {      
+      @include border-radius(4px);     
+      padding-left:10px;
       //numbers 
       span {
-        @include square-number;
+        @include square-number;  
       }
       //adjusting the last item's dotted line
       &:last-child {
         ul li {
           &:last-child {
-            margin-bottom: -10px;
+            margin-bottom:-10px;
           }
         }
       }
       //second level       
-      ul {
-        padding: 1px;
-        margin-left: 10px;
-        list-style: none;
-        background: url(../images/treeline.jpg) repeat-y;
+      ul {     
+      padding:1px;
+      margin-left:10px;    
+      list-style:none;
+      background:url(../images/treeline.jpg) repeat-y;
         li {
-          margin: 8px 0;
-          background: url(../images/tree-t.png) no-repeat 0 5px;
+          margin:8px 0; 
+          background:url(../images/tree-t.png) no-repeat 0 5px;          
           //adjusting the last item's dotted line
           ul li {
             &:last-child {
-              margin-bottom: -10px;
-            }
+               margin-bottom:-10px;
+            }           
           }
-        }
-        /* li (second level) */
-      }
-      /* ul (second level)*/
-    }
-    /* li (top level) */
-  }
-  /* /ul (top level) */
-}
-
-/* /.tree */
+        } /* li (second level) */
+      } /* ul (second level)*/
+    }/* li (top level) */
+  } /* /ul (top level) */
+}/* /.tree */
 
 @media screen and (min-width: 768px) {
   .highlights-annotations-bar {
@@ -203,11 +165,11 @@ span[class*="highlight"] {
     float: left;
 
     .column-title {
-      background: $dark-grey;
+      background:$dark-grey;
       text-align: center;
       display: block;
-      color: $white;
-      padding: 2px;
+      color:$white;
+      padding:2px;
       &:hover, &:active {
         color: $white;
       }

@@ -5,19 +5,18 @@ aand related media queries.
 
 */
 
-.content-main-wrapper {
-  /* document view */
+.content-main-wrapper { /* document view */
   $topgutter: 10%;
-  height: $window-height - $topgutter;
-  overflow-x: hidden;
-  overflow-y: auto;
+  height:$window-height - $topgutter;
+  overflow-x:hidden;
+  overflow-y:auto;
 }
 
 /* Main area */
 .document-area {
-  float: left;
-  position: relative;
-  height: 100%;
+  float:left;
+  position:relative;
+  height:100%;
 
   .navbar {
     &:first-child {
@@ -31,75 +30,76 @@ aand related media queries.
 
 /* Secondary screen */
 .content-secondary-wrapper {
-  height: 100%;
+  height:100%;
 }
 
 /* Collapsible content – main view */
 .claim-wrapper {
-
-  & > h4 {
-    display: block;
-    width: 100%;
-    font-size: 14px;
-    font-weight: normal;
-    background: $mid-grey;
-    color: $black;
-    padding: 5px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    @include border-radius(2px);
-
+  
+  &>h4 {
+    display:block;
+    width:100%;
+    font-size:14px;
+    font-weight:normal;
+    background:$mid-grey;
+    color:$black;
+    padding:5px;
+    margin-bottom:8px;
+    cursor:pointer;
+    @include border-radius (2px);
+    
     .claim-number {
-      background: $white;
-      font-size: 10px;
-      padding: 2px 1px;
-      margin-right: 5px;
-      text-align: center;
-      width: 18px;
-      display: block;
-      float: left;
-      @include border-radius(4px);
+      background:$white;
+      font-size:10px;
+      padding:2px 1px;
+      margin-right:5px;
+      text-align:center;
+      width:18px;
+      display:block;
+      float:left;
+      @include border-radius (4px);
     }
-
+    
   }
-
+  
   a {
-    cursor: pointer;
-    background: url(../images/tree-t.png) no-repeat center 5px;
-    margin-left: -4px;
+    cursor:pointer;
+    background:url(../images/tree-t.png) no-repeat center 5px;
+    margin-left:-4px;
     &:hover {
-      text-decoration: none;
+      text-decoration:none;
       span {
-        border-color: darken($mid-grey, 15%);
+        border-color:darken($mid-grey, 15%);
       }
     }
     span {
       @include square-number;
-      color: $dark-grey;
-      display: inline-block;
-      margin: 0 4px;
+      color:$dark-grey;
+      display:inline-block;
+      margin:0 4px;
     }
   }
-
+  
   [id*="claim"] {
     span {
-      float: left;
+      float:left;
       @include square-number;
-      margin-left: -25px;
+      margin-left:-25px;
     }
     ul {
-      padding: 0;
-      margin: 0;
+      padding:0;
+      margin:0;
       li {
-        padding-left: 20px;
-        margin-left: 5px;
-        margin-top: 20px;
-        list-style: none;
+        padding-left:20px;
+        margin-left:5px;
+        margin-top:20px;
+        list-style:none;
       }
     }
   }
-
+  
 }
+
 
 /* --- Media Queries --- */
 
@@ -109,21 +109,20 @@ aand related media queries.
 
     /* Main area */
     .document-area {
-      float: left;
-      width: 82%;
-      height: 100%;
+      float:left;
+      width:82%;
+      height:100%;
     }
 
-    &.dual-screen {
-      /* everything inside here modifies the dual screen view */
+    &.dual-screen { /* everything inside here modifies the dual screen view */
 
       .screen-one {
-        float: left;
-        width: 60%;
+        float:left;
+        width:60%;
         .annotations {
           .annotation {
             span {
-              float: right;
+              float:right;
             }
             h5, p {
               display: none;
@@ -136,23 +135,23 @@ aand related media queries.
       }
 
       .screen-two {
-        float: left;
+        float:left;
         display: block;
-        width: 40%;
-        height: 100%;
-        background: #dedede;
+        width:40%;
+        height:100%;
+        background:#dedede;
 
         header {
           float: left;
           width: 100%;
-          margin-bottom: 10px;
+          margin-bottom:10px;
           h5 {
-            float: left;
+            float:left;
             padding: 5px 0 0 60px;
           }
           button.close {
             display: block;
-            padding: 15px 15px 0 0;
+            padding:15px 15px 0 0;
           }
         }
 
