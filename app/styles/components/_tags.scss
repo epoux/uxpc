@@ -1,0 +1,94 @@
+/* Tags and viewer style sheet
+
+This stylesheet addresses the 'tags and viewer' styles,
+along with associated media queries.
+
+*/
+
+.tag-terms {
+  float:left;
+  height: 100%;
+  width: 230px;
+  position: absolute;
+  left: -245px;
+  padding-top:15px;
+  
+  ul {
+    list-style:none;
+    padding:0;
+    li {
+      width:100%;
+      margin:2px 0;
+      a {
+        display:block;
+        padding:10px;
+        background:$white;
+        border:1px solid $mid-grey;
+        &:hover {
+          background:$light-grey;
+          text-decoration:none;
+        }
+      }     
+    }
+  } 
+}
+
+.access-link {
+  display:block;
+  width:40px;
+  height:40px;
+  background:$white;
+  border:1px solid $mid-grey;
+  text-align:center;
+  line-height:40px;
+  float:left;
+  font-size:12px;
+  color:$dark-grey;
+  cursor:pointer;
+  &:first-child {
+    margin-right:5px;
+  }
+  &.active {
+    background:$light-grey;
+  }
+}
+
+.filter {
+  float:left;
+  margin:10px 15px 10px 0;
+  cursor:pointer;
+  &.active {
+    font-weight:bold;
+  }
+}
+
+.tag-category {
+  background:$light-grey;
+  padding:15px;
+  position:relative;
+  min-height:150px;
+  h5 {
+    margin-top:0;
+  }
+  .bl {
+    position:absolute;
+    bottom:0;
+    left:0;
+  }
+  .tag-term {
+    background:$dark-grey;
+    color:$white;
+    padding:5px;
+    float:left;
+    margin-right:2px;
+  }
+  .stars {
+    float:left;
+    margin-top:4px;
+    margin-left:20px;
+    span {
+      margin-right:2px;
+    }
+  }
+}
+

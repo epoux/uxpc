@@ -4,12 +4,7 @@ $(document).ready(function () {
 	// Firing off all the loading functions
 	loadLeftNav();
 	loadRightNav();
-	loadHeader();
-	loadHighlightsNavigation();
 	
-	//load initial page
-	pageLoad();
-
 	// COMPONENT LOADING
 	// Loading the appropriate html snippets into the content areas. These in turn call a set of functions 
 	// related to the component
@@ -17,6 +12,59 @@ $(document).ready(function () {
 	function loadLeftNav(){ // Left (main) navigation
 		$('.navbar-left').load('components/nav-left.html', function(){
 			leftNavFunctions();
+			$('a[title="Search"]').on('click', function(){
+				$('.container-main').load('views/search.html', function(){
+					//load search history fly out
+					$('.pull-out a.pull').on('click', function(){
+						$('.pull-out').toggleClass('slide-in');
+						$('.container-main').toggleClass('nudge');
+						
+						var pop = '<div class="pop"><header><h3>Q1</h3><div class="links"><span class="glyphicon glyphicon-file"></span><span class="glyphicon glyphicon-time"></span></div></header></div>'
+						
+						$('.search-term').popover({
+					    	placement:'right',
+					    	content: pop,
+					    	html:true,
+					    	trigger: 'focus hover',
+					    	container: 'body',
+					    	viewport: { selector: 'body', padding: 0 },
+					    });				    
+					});
+					//toggle selected class on click
+					$('.pull-out .search-term').unbind('click').on('click', function(){
+						$(this).parent().parent().toggleClass('selected');
+						$('.presearch-field').not($(this).parent().parent()).removeClass('selected');
+						
+						//setting the var to determine which search field is loaded
+						var id = $(this).attr("rel");
+						var url = 'includes/searchresults.html #' + id;
+						
+						$('.search-content').load(url, function(){
+							//additional functions here						
+						});
+						
+					});
+					//load dashboard
+					$('#dashboard').on('click', function(){
+						$('.search-content').toggleClass('shrink');
+						$('.pull-out').toggleClass('expand');
+					});
+				});			
+			});
+			$('a[title="Application"]').on('click', function(){
+				$('.container-main').load('views/application.html', function(){
+					pageLoad();
+					loadHeader();
+					loadHighlightsNavigation();				
+				});
+			});
+			$('a[title="Tags & viewer"]').on('click', function(){
+				$('.container-main').load('views/tags-and-viewer.html');
+				$('.container-main').css('position', 'relative'); //this is a hack - need to find a solution
+			});
+			$('a[title="Office actions"]').on('click', function(){
+				$('.container-main').load('views/office-actions.html');
+			});
 		});
 	}
 	
@@ -55,7 +103,12 @@ $(document).ready(function () {
 	    // Left hand navigation (main) "fly out" menu
 	    $('.navbar-left ul li').on('mouseenter mouseleave', function () {
 	        $(this).find('.secondary-nav').toggleClass('slide-in');
-	        $(this).find('a').toggleClass('selected');
+	        $(this).find('a').toggleClass('selected');	        
+	    });
+	    
+	    //Restore container to original position (centered) if it has been changed
+	    $('.navbar-left ul li').not('a[title="search"]').on('click', function(){
+	    	$('.container-main').removeClass('nudge');
 	    });
 
 	}//END left nav functions
@@ -89,6 +142,11 @@ $(document).ready(function () {
 		    });
 
     	});
+    	//Remove notifications from Query|Highlights
+    	$('.nav-right ul li a[rel="queryhighlights"]').on('click', function(){
+    		$('.notification').fadeOut();
+    		n = 0;
+    	})
     }//END right nav functions
     
     function headerFunctions(){
@@ -161,23 +219,4 @@ $(document).ready(function () {
 	    
 	//GENERAL 
 
-    //Beginning of 'on-object menu'
-    
-    $('.oo-menu').hide();
-    
-    $('#anchor').on('click', function(){
-    	var pos = $(this).offset();
-    	var posLeft = pos.left;
-    	var posTop = pos.top;
-    	var width = $(this).width();
-    	
-    	$('.oo-menu').toggle().css('left', (posLeft + width + 10)).css('top', posTop);
-    });
-    
-    $('.oo-menu li a').on('mouseenter mouseleave', function(){
-    	secondary = $(this).attr('href');
-    	$(secondary).show();
-    	$('.oo-menu').find('div').not($(secondary)).hide();
-    });
-    
 });

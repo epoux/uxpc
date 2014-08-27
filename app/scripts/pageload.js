@@ -10,7 +10,7 @@ function pageLoad(){
 	    }
 	    return text;
 	}
-
+	//On object menu - text selection
 	$('#view-screen-reading').mouseup(function (e){
        getSelectionText();
 
@@ -19,7 +19,7 @@ function pageLoad(){
        
        if (text.length > 1){
        		//console.log(text);       	
-	    	$('.oo-menu').fadeIn(100).css('left', pageX).css('top', pageY);
+	    	$('.oo-menu').fadeIn(100).css('left', pageX).css('top', pageY);    	
        } else {
        		$('.oo-menu').fadeOut(200);
        		$(secondary).hide();
@@ -32,6 +32,26 @@ function pageLoad(){
 	$('.colour-picker span.caret').unbind('click').on('click', function(){
 		$('.colour-picker ul').toggle();
 	});
+
+	//'On-object menu' - menu selection
+    
+    $('.oo-menu').hide();
+    
+    $('#anchor').on('click', function(){
+    	var pos = $(this).offset();
+    	var posLeft = pos.left;
+    	var posTop = pos.top;
+    	var width = $(this).width();
+    	
+    	$('.oo-menu').toggle().css('left', (posLeft + width + 10)).css('top', posTop);
+    });
+    
+    $('.oo-menu li a').on('mouseenter mouseleave', function(){
+    	secondary = $(this).attr('href');
+    	$(secondary).show();
+    	$('.oo-menu').find('div').not($(secondary)).hide();
+    });
+
 	//Toggle selected class on colour picker
 	$('.colour-picker ul li').unbind('click').on('click', function(){
 		$(this).addClass('selected');
@@ -40,6 +60,7 @@ function pageLoad(){
 		$('.search-term').addClass(currClass);
 		$('.colour-picker ul').fadeOut(100);	
 	});
+
 	//Add highlights to search term
 	n = 0;
    	$('.oo-menu .btn-add').unbind('click').on('click', function(){
@@ -56,28 +77,45 @@ function pageLoad(){
 		newWidth = 100 / $('ul.swatches li').size() + "%";
 		$('ul.swatches li, .highlight-checkbox').css('width', newWidth);
 		//$('body p').highlight(text, { wordsOnly: true, className: currClass });
+		//Trigger highlighting function
 		getHighlights();
-		//console.log('text: ' + text);
-		//console.log('currClass: ' + currClass);
+		//Trigger alert/notification in helper menu
+		$('.notification').fadeIn().html(n).css('visibility', 'visible');
+		//Add search term to Query|Highlights panel in helpers menu
+		$('ul.highlights-list.main').append('<li><input type="checkbox" class="checkbox-highlight">&nbsp;<input type="checkbox">&nbsp;<span class="'+ currClass +'">' + text + '</span></li>');
+		
 	});
 
 	function getHighlights() {
-		$('.swatches li').on('click', function(){
+		
+		$('.swatches li').unbind('click').on('click', function(){
 	   		//alert('selected');
-	   		
+
 	   		hClass = $(this).attr('class');
 	   		hText = $(this).attr('title');
 	   		$(this).toggleClass('checked');
-	   		
-	   		if($(this).hasClass('checked')) {
-				$('body').highlight(hText);
-				$('.highlight').addClass(hClass);
-			} else {
-				$('body').unhighlight(hText);
-			}
-	   	});   	
-	}
 
+	   		console.log(hClass);
+	   		
+	   		//sequential class for highlights - if needed
+	   		currHighlight = 'highlight-' + n;
+
+	   		//something
+	   		$(this).parent().parent().find('input' + hClass).attr('checked', 'checked');
+	   		
+	   		if($(this).hasClass('checked')) {	   			
+				$('body').highlight(hText, {className: hClass});
+				//avoid the highlight plugin creating nested spans
+				$('body p').find('span span').unwrap();
+				
+			} else {
+				//remove the colour class - workaround for the 'unhighlight' method if the highlight plugin
+				$('body p').find('span').removeClass(hClass);
+			}
+			
+	   	});
+	   	  	
+	}
 
 	//Load 'Claims' initially
 	$('#view-screen-reading').load('includes/claims.html .wrap', function(){
@@ -119,7 +157,7 @@ function pageLoad(){
 	//Load new content on click
 	$('.highlights-filter a').on('click', function(){
     	$('.filter-trigger').html($(this).parent().attr('id') + '&nbsp;<b class="caret"></b>');
-    	url = 'includes/' + $(this).parent().attr('id') + '.html .wrap';
+    	url = 'includes/' + $(this).parent().attr('id') + '.html';
     	
     	$('#view-screen-reading').load(url, function(){
     		
@@ -145,4 +183,5 @@ function pageLoad(){
 		    });		    
     	});
     });
+
 }//END function pageLoad()

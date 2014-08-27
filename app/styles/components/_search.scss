@@ -1,0 +1,169 @@
+/* Search style sheet
+
+This stylesheet addresses the 'Search' styles,
+along with associated media queries.
+
+*/
+
+$pull-put-width : 300px;
+
+.search-wrapper {
+  position:relative; 
+  float:left;
+  width:100%;
+  height:100%;
+}
+
+.pull-out {
+  position:absolute;
+  z-index:0;
+  width:$pull-put-width;
+  height:100%;
+  background:darken($light-grey, 5%);
+  @include transition(0.3s);
+  
+  a {
+    margin:10px 0;
+    &.pull {
+      float:left;
+      display:block;
+      color:$dark-grey;
+      width:40px;
+      height:40px;
+      line-height:40px;
+      text-align:center;
+      text-decoration:none;
+      margin:0 0 0 -40px;
+      background:darken($light-grey, 5%);
+    }
+  }
+  
+  &.slide-in {
+    transform: translate(-$pull-put-width, 0);
+    -webkit-transform: translate(-$pull-put-width, 0);
+    -moz-transform: translate(-$pull-put-width, 0);
+    -ms-transform: translate(-$pull-put-width, 0);
+    -o-transform: translate(-$pull-put-width, 0);
+  }
+  
+  &.expand {
+    width:120%;
+    .presearch {
+      background:$white;
+      float:left;
+      clear:both;
+      margin-left:20px;
+    }
+  }
+  
+  header {
+    padding:20px;
+  }
+  
+  .presearch {
+    width:$pull-put-width;
+    @include transition(0.3s);
+  }
+  
+  .presearch-field {
+    float:left;
+    padding:10px 20px;
+    width:100%;
+    margin:0;
+    
+    &.selected {
+      background:$white;
+    }
+    
+    p {
+      float:left;
+      display:block;
+      max-width:50%;
+      color:$dark-grey;
+    }
+    
+    .search-terms {
+      float:right;
+      width:50%;
+      .search-term {
+        float:right;
+        position:relative;
+        background:darken($mid-grey, 5%);
+        padding:0 5px 0 0;
+        height:30px;
+        line-height:30px;
+        text-align:right;
+        margin-bottom:-1px;
+        clear:both;
+        max-width:100%;
+        font-size:smaller;
+        font-weight:bold;
+        color:$white;
+        border:1px solid darken($mid-grey, 10%);;
+
+        span.unread {
+          position:absolute;
+          left:0;
+          height:28px;
+          background:$white;
+        }
+      }
+    }
+  }/* presearch-field */
+  
+}
+
+.search-content {
+  position:absolute;
+  right:0;
+  width:100%;
+  height:100%;
+  z-index:2;
+  background:url(../images/search.png) no-repeat $white;
+  background-size:100%;
+  @include transition(0.3s);
+  
+  &.shrink {
+    width:5%;
+    border:1px solid red;
+    
+  }
+}
+
+/* popover styles */
+
+.pop {
+  width:100%;
+  float:left;
+  padding: 15px;
+  background:$white;
+  header {
+    width:200px;
+    margin:0 0 15px 0;
+    h3 {
+      margin:0;
+      float:left;
+    }
+    .links {
+      float:right;
+      margin-top:5px;
+      span {
+        float:left;
+        margin:0 2px;
+      }
+    }
+  }
+}
+
+.container-main { 
+  @include transition(0.3s); 
+}
+
+.nudge { /* Applied to container-main */
+  transform: translate(($pull-put-width/2), 0);
+  -webkit-transform: translate(($pull-put-width/2), 0);
+  -moz-transform: translate(($pull-put-width/2), 0);
+  -ms-transform: translate(($pull-put-width/2), 0);
+  -o-transform: translate(($pull-put-width/2), 0);
+}
+

@@ -56,6 +56,11 @@ including the 'fly out menu', along with associated media queries.
             right:1px;
           }
         }
+        
+        &[title="Settings"] {
+          position:absolute;
+          bottom:0;
+        }
 
       }
     }
