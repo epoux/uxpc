@@ -6154,7 +6154,7 @@ along with associated media queries.
   -o-transition: all 0.3s ease; }
   .search-content.shrink {
     width: 5%;
-    border: 1px solid red; }
+    background: none; }
 
 /* popover styles */
 .pop {

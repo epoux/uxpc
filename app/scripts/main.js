@@ -19,7 +19,12 @@ $(document).ready(function () {
 						$('.pull-out').toggleClass('slide-in');
 						$('.container-main').toggleClass('nudge');
 						
-						var pop = '<div class="pop"><header><h3>Q1</h3><div class="links"><span class="glyphicon glyphicon-file"></span><span class="glyphicon glyphicon-time"></span></div></header></div>'
+						//var pop = '<div class="pop"><header><h3>Q1</h3><div class="links"><span class="glyphicon glyphicon-file"></span><span class="glyphicon glyphicon-time"></span></div></header></div>'
+						
+						var pop = function(){
+							$('#pop').load('includes/claims.html');
+							return $('#pop').html();
+						}
 						
 						$('.search-term').popover({
 					    	placement:'right',
@@ -30,15 +35,16 @@ $(document).ready(function () {
 					    	viewport: { selector: 'body', padding: 0 },
 					    });				    
 					});
-					//toggle selected class on click
+					//click events for search history 'bars'
 					$('.pull-out .search-term').unbind('click').on('click', function(){
+						//toggle selected class on click
 						$(this).parent().parent().toggleClass('selected');
 						$('.presearch-field').not($(this).parent().parent()).removeClass('selected');
 						
 						//setting the var to determine which search field is loaded
 						var id = $(this).attr("rel");
 						var url = 'includes/searchresults.html #' + id;
-						
+						//load/'replay' the search  
 						$('.search-content').load(url, function(){
 							//additional functions here						
 						});
