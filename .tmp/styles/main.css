@@ -5296,8 +5296,7 @@ along with associated media queries.
   width: 100%;
   height: 40px;
   z-index: 3;
-  /* slide-in menu */
-  /* highlights list */ }
+  /* slide-in menu */ }
   .nav-right > ul {
     margin: 10px 0 0 0;
     padding: 0;
@@ -5398,19 +5397,6 @@ along with associated media queries.
           display: block; }
     .nav-right .slide-in-menu .btn.pull-left:first-child {
       margin-right: 5px; }
-  .nav-right ul.highlights-list {
-    list-style: none;
-    padding: 0; }
-    .nav-right ul.highlights-list li {
-      padding: 2px 0; }
-      .nav-right ul.highlights-list li input[type="checkbox"] {
-        margin-right: 5px; }
-    .nav-right ul.highlights-list.second li {
-      padding-left: 42px;
-      position: relative; }
-    .nav-right ul.highlights-list.second input[type="checkbox"] {
-      position: absolute;
-      left: 0; }
 
 /* navbar right */
 /* --- Media Queries --- */
@@ -6066,8 +6052,7 @@ along with associated media queries.
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  /* presearch-field */ }
+  -o-transition: all 0.3s ease; }
   .pull-out a {
     margin: 10px 0; }
     .pull-out a.pull {
@@ -6094,50 +6079,59 @@ along with associated media queries.
       float: left;
       clear: both;
       margin-left: 20px; }
+    .pull-out.expand .dashboard {
+      width: 1110px;
+      height: 700px; }
   .pull-out header {
     padding: 20px; }
-  .pull-out .presearch {
-    width: 300px;
-    transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease; }
-  .pull-out .presearch-field {
+
+/* pull-put */
+.presearch {
+  width: 300px;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease; }
+
+.presearch-field {
+  float: left;
+  padding: 10px 20px;
+  width: 100%;
+  margin: 0; }
+  .presearch-field.selected {
+    background: white; }
+  .presearch-field p {
     float: left;
-    padding: 10px 20px;
-    width: 100%;
-    margin: 0; }
-    .pull-out .presearch-field.selected {
+    display: block;
+    max-width: 50%;
+    color: #666666; }
+
+/* presearch-field */
+.search-terms {
+  float: right;
+  width: 50%; }
+  .search-terms .search-term {
+    float: right;
+    position: relative;
+    background: #bfbfbf;
+    padding: 0 5px 0 0;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    margin-bottom: -1px;
+    clear: both;
+    max-width: 100%;
+    font-size: smaller;
+    font-weight: bold;
+    color: white;
+    border: 1px solid #b3b3b3;
+    cursor: pointer; }
+    .search-terms .search-term span.unread {
+      position: absolute;
+      left: 0;
+      height: 28px;
       background: white; }
-    .pull-out .presearch-field p {
-      float: left;
-      display: block;
-      max-width: 50%;
-      color: #666666; }
-    .pull-out .presearch-field .search-terms {
-      float: right;
-      width: 50%; }
-      .pull-out .presearch-field .search-terms .search-term {
-        float: right;
-        position: relative;
-        background: #bfbfbf;
-        padding: 0 5px 0 0;
-        height: 30px;
-        line-height: 30px;
-        text-align: right;
-        margin-bottom: -1px;
-        clear: both;
-        max-width: 100%;
-        font-size: smaller;
-        font-weight: bold;
-        color: white;
-        border: 1px solid #b3b3b3; }
-        .pull-out .presearch-field .search-terms .search-term span.unread {
-          position: absolute;
-          left: 0;
-          height: 28px;
-          background: white; }
 
 .search-content {
   position: absolute;
@@ -6152,9 +6146,163 @@ along with associated media queries.
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease; }
+  .search-content p {
+  /* temp classes for display 
+display: block;
+margin: 0 auto;
+position: absolute;
+top: 300px;
+left: 50%;
+background: yellow;
+padding: 20px;*/ }
   .search-content.shrink {
     width: 5%;
     background: none; }
+    .search-content.shrink p {
+      display: none; }
+  .search-content .col {
+    float: left;
+    margin: 0;
+    height: 100%; }
+  .search-content .query-builder {
+    padding: 15px;
+    width: 30%;
+    background: white; }
+
+.query-builder header {
+  float: left;
+  clear: both;
+  width: 100%; }
+  .query-builder header .navigation {
+    float: left; }
+    .query-builder header .navigation a {
+      margin: 0;
+      color: black; }
+      .query-builder header .navigation a:hover {
+        color: #cccccc; }
+  .query-builder header h4 {
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: auto; }
+.query-builder h4, .query-builder h6 {
+  float: left;
+  display: block;
+  width: 100%;
+  border-bottom: 1px dotted #eeeeee;
+  padding-bottom: 4px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  cursor: pointer; }
+.query-builder section {
+  float: left;
+  width: 100%; }
+  .query-builder section ul {
+    list-style: none;
+    padding: 0; }
+    .query-builder section ul li {
+      margin: 2px 0; }
+  .query-builder section h6 {
+    color: #a6a6a6; }
+    .query-builder section h6:before {
+      float: left;
+      content: "^";
+      font-size: 14px;
+      width: 15px;
+      height: 15px;
+      line-height: 15px; }
+  .query-builder section .search-param {
+    width: 100%;
+    float: left;
+    margin-bottom: 15px; }
+    .query-builder section .search-param p {
+      float: left;
+      margin: 1px 10px 0 0; }
+    .query-builder section .search-param button {
+      float: left;
+      min-width: 50px;
+      text-align: left;
+      margin-right: 5px;
+      transition: all 0.4s ease;
+      -webkit-transition: all 0.4s ease;
+      -moz-transition: all 0.4s ease;
+      -ms-transition: all 0.4s ease;
+      -o-transition: all 0.4s ease; }
+      .query-builder section .search-param button .dismiss {
+        float: right; }
+      .query-builder section .search-param button:hover {
+        background: #b3b3b3; }
+  .query-builder section ul.view {
+    margin: 0 0 15px 0;
+    padding: 0; }
+    .query-builder section ul.view li {
+      display: inline-block;
+      margin-right: 25px; }
+      .query-builder section ul.view li a {
+        color: #666666;
+        transition: all 0.5s ease;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease; }
+        .query-builder section ul.view li a:hover {
+          text-decoration: none;
+          color: black; }
+      .query-builder section ul.view li.active {
+        border-bottom: 3px solid #666666; }
+
+.concept-group {
+  float: left;
+  width: 100%; }
+
+ul.highlights-list {
+  list-style: none;
+  padding: 0; }
+  ul.highlights-list li {
+    padding: 4px 0;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease; }
+    ul.highlights-list li:hover {
+      background: #fbfbfb; }
+    ul.highlights-list li input[type="checkbox"] {
+      margin-right: 5px; }
+    ul.highlights-list li > span {
+      min-width: 55%;
+      display: inline-block;
+      padding: 2px 0 2px 5px;
+      cursor: pointer; }
+    ul.highlights-list li em.version {
+      color: #cccccc;
+      margin-left: 5px; }
+  ul.highlights-list.second li {
+    padding-left: 42px;
+    position: relative; }
+  ul.highlights-list.second input[type="checkbox"] {
+    position: absolute;
+    left: 0; }
+
+/* highlights list */
+.query-filter {
+  width: 18%;
+  background: url(../images/filters.jpg) no-repeat white;
+  border-left: 1px dotted #cccccc;
+  border-right: 1px dotted #cccccc; }
+
+.query-results {
+  width: 52%;
+  background: url(../images/search-content.jpg) no-repeat white; }
+
+/* dashboard */
+.dashboard {
+  float: left;
+  display: none;
+  background: url(../images/dashboard.jpg) no-repeat;
+  background-size: 100%; }
 
 /* popover styles */
 .pop {
@@ -6165,7 +6313,7 @@ along with associated media queries.
   .pop header {
     width: 200px;
     margin: 0 0 15px 0; }
-    .pop header h3 {
+    .pop header h4 {
       margin: 0;
       float: left; }
     .pop header .links {
@@ -6173,7 +6321,7 @@ along with associated media queries.
       margin-top: 5px; }
       .pop header .links span {
         float: left;
-        margin: 0 2px; }
+        margin: 0; }
 
 .container-main {
   transition: all 0.3s ease;
@@ -6189,3 +6337,10 @@ along with associated media queries.
   -moz-transform: translate(150px, 0);
   -ms-transform: translate(150px, 0);
   -o-transform: translate(150px, 0); }
+
+/* ON-OBJECT MENU style sheet
+
+This stylesheet addresses the 'highlights and annotations bar' styles,
+along with associated media queries.
+
+*/

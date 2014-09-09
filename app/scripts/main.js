@@ -19,12 +19,19 @@ $(document).ready(function () {
 						$('.pull-out').toggleClass('slide-in');
 						$('.container-main').toggleClass('nudge');
 						
-						//var pop = '<div class="pop"><header><h3>Q1</h3><div class="links"><span class="glyphicon glyphicon-file"></span><span class="glyphicon glyphicon-time"></span></div></header></div>'
-						
-						var pop = function(){
-							$('#pop').load('includes/claims.html');
-							return $('#pop').html();
+						if($('.search-content').hasClass('shrink')){
+							$('.search-content').toggleClass('shrink');
+							$('.pull-out').toggleClass('expand');
+							$('.dashboard').toggle(400);
 						}
+						
+						//var pop = ''
+						
+						pop = function(){
+								theid = $(this).attr("rel");
+								$('#pop').load('includes/popover.html');
+								return $('#pop').html();						
+							  }
 						
 						$('.search-term').popover({
 					    	placement:'right',
@@ -54,6 +61,7 @@ $(document).ready(function () {
 					$('#dashboard').on('click', function(){
 						$('.search-content').toggleClass('shrink');
 						$('.pull-out').toggleClass('expand');
+						$('.dashboard').toggleClass('active').delay(400).fadeToggle(400);
 					});
 				});			
 			});
@@ -108,7 +116,7 @@ $(document).ready(function () {
 	    
 	    // Left hand navigation (main) "fly out" menu
 	    $('.navbar-left ul li').on('mouseenter mouseleave', function () {
-	        $(this).find('.secondary-nav').toggleClass('slide-in');
+	        $(this).find('.secondary-nav').delay(800).toggleClass('slide-in');
 	        $(this).find('a').toggleClass('selected');	        
 	    });
 	    

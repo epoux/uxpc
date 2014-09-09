@@ -213,55 +213,117 @@
 			</div><!-- /.panel-group -->
     	</div><!-- /.annotations -->
     	<div class="menu-item queryhighlights">
-    		<h3>Query | Highlights</h3>
-    		<h5>Q | H</h5>
-    		<ul class="highlights-list main">
-    			<li>
-    				<input type="checkbox">
-    				<input type="checkbox" class="checkbox-highlight">
-    				<span class="light-orange">audible information</span>
-    			</li>
-    			<li>
-    				<input type="checkbox">
-    				<input type="checkbox" class="checkbox-highlight">
-    				<span class="light-green">text-to-speech</span>
-    			</li>
-    			<li>
-    				<input type="checkbox">
-    				<input type="checkbox" class="checkbox-highlight">
-    				<span class="light-blue">spoken query</span>
-    			</li>
-    		</ul>
-    		<ul class="highlights-list second">
-    			<li>
-    				<input type="checkbox">
-    				<span>navigation</span>
-    			</li>
-    			<li>
-    				<input type="checkbox">
-    				<span>G06F/C/LOW</span>
-    			</li>
-    			<li>
-    				<input type="checkbox">
-    				<span>applicant: Apple Inc.</span>
-    			</li>
-    			<li>
-    				<input type="checkbox">
-    				<span>inventor: FLEIZACH, Christopher</span>
-    			</li>
-    			<li>
-    				<input type="checkbox">
-    				<span>inventor: GRUBER, Thomas</span>
-    			</li>
-    			<li>
-    				<input type="checkbox">
-    				<span>G06F17/30</span>
-    			</li>
-    		</ul>
-    		<br />
-			<button class="btn btn-sm btn-default">Search NOW</button>
-    		<button class="btn btn-sm btn-default">Search LATER</button>
-			<br /><br />
-    		<a class="small" href="#">Got to query builder</a>
+    		<div class="col query-builder">
+				<header>
+					<div class="navigation">
+						<a href="#"><span class="glyphicon glyphicon-chevron-left">&nbsp;</span></a>
+						<a href="#"><span class="glyphicon glyphicon-chevron-right">&nbsp;</span></a>
+					</div>					
+					<h4>Q13</h4>				
+				</header>
+				<section class="quick-search">
+					<h4>Quick search</h4>
+					<div class="search-param">
+						<p>Search on:</p>
+						<button class="btn btn-xs">G <span class="dismiss">x</span></button>
+						<button class="btn btn-xs">PL <span class="dismiss">x</span></button>
+					</div><!-- search param -->				
+					<div class="input-group">
+					  <input type="text" class="form-control" placeholder="Enter keywords">
+					  <span class="input-group-addon">GO</span>
+					</div><!-- input group -->
+				</section><!-- /.quick-search -->
+				<section class="concept-search">
+					<h4>Concept search</h4>
+					<ul class="view">
+						<li class="active"><a href="#">List</a></li>
+						<li><a href="#">Table</a></li>
+						<li><a href="#">Command line</a></li>
+					</ul>
+					<div class="list-view">
+						<div class="search-param">
+							<p>Search on:</p>
+							<button class="btn btn-xs">G <span class="dismiss">x</span></button>
+							<button class="btn btn-xs">PL <span class="dismiss">x</span></button>
+						</div><!-- search param -->
+						<h6>Concepts</h6>
+						<div class="concept-group queryhighlights">	
+				    		<h5>Q | H</h5>
+				    		<ul class="highlights-list main">
+				    			<li>
+				    				<input type="checkbox">
+				    				<input type="checkbox" class="checkbox-highlight">
+				    				<span class="light-orange">Voice command</span>
+				    				<em class="version small">v3</em>
+				    			</li>
+				    			<li>
+				    				<input type="checkbox">
+				    				<input type="checkbox" class="checkbox-highlight">
+				    				<span class="light-green">text-to-speech</span>
+				    				<em class="version small">v3</em>
+				    			</li>
+				    			<li>
+				    				<input type="checkbox">
+				    				<input type="checkbox" class="checkbox-highlight">
+				    				<span class="light-blue">spoken query</span>
+				    				<em class="version small">v3</em>
+				    			</li>
+				    			<li>
+				    				<input type="checkbox">
+				    				<input type="checkbox" class="checkbox-highlight">
+				    				<span class="light-yellow">navigation</span>
+				    				<em class="version small">v3</em>
+				    			</li>
+				    			<li>
+				    				<input type="checkbox">
+				    				<input type="checkbox" class="checkbox-highlight">
+				    				<span class="light-red">hyperlink</span>
+				    				<em class="version small">v3</em>
+				    			</li>
+				    		</ul>		    		
+				  		</div><!-- queryhighlights -->
+				  		<h6>Classes</h6>
+				  		<div class="concept-group classes">
+				  			<ul>
+				    			<li>
+				    				<input type="checkbox">
+				    				<span>G06F/C/LOW</span>			    				
+				    			</li>
+				    			<li>
+				    				<input type="checkbox">
+				    				<span>G06F17/30</span>			    				
+				    			</li>
+				    		</ul>
+				 		</div><!-- concept group -->
+				 		<h6>Metadata</h6>
+				  		<div class="concept-group classes">
+				  			<ul>
+				    			<li>
+				    				<input type="checkbox">
+				    				<span>applicant: Apple Inc.</span>			    				
+				    			</li>
+				    			<li>
+				    				<input type="checkbox">
+				    				<span>inventor: FLEIZACH, Christopher</span>			    				
+				    			</li>
+				    			<li>
+				    				<input type="checkbox">
+				    				<span>inventor: GRUBER, Thomas</span>			    				
+				    			</li>
+				    		</ul>
+				 		</div><!-- concept group -->
+				 		<h6>Preparations</h6>
+				  		<div class="concept-group classes">
+				  			<ul>
+				    			<li>
+				    				<input type="checkbox">
+				    				<span>find similar on Application Abstract</span>			    				
+				    			</li>
+				    		</ul>
+				 		</div><!-- concept group -->
+				  	</div><!-- list-view -->
+				</section><!-- /.concept-search -->
+			</div><!-- /.query-builder -->
     	</div>
+    	
     </div><!-- /.slide-in-menu -->

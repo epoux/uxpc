@@ -159,31 +159,7 @@ $base-tab-size: 40px;
 
   }/* slide-in menu */
   
-  ul.highlights-list {
-    list-style:none;
-    padding:0;
-    
-    li {
-      padding:2px 0;
-      input[type="checkbox"] {
-        margin-right:5px;
-      }
-    }
-    
-    &.second {
-      li {
-        padding-left:42px;
-        position:relative;
-      }
-      input[type="checkbox"] {
-        position:absolute;
-        left:0;   
-      }
-    }
-  }/* highlights list */
-  
 } /* navbar right */
-
 
 /* --- Media Queries --- */
 
