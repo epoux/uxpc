@@ -28,6 +28,7 @@ including the 'fly out menu', along with associated media queries.
       float:left;
       list-style: none;
       overflow: hidden;
+      @include transition(0.4s);
 
       &> a {
         display: block;
@@ -63,6 +64,31 @@ including the 'fly out menu', along with associated media queries.
         }
 
       }
+     
+      &.extend {
+        width:$navigation-width*2;      
+        a {
+          width:$navigation-width*2;
+        }
+      }
+      
+      &.epNo {
+        background:$white;
+        border:5px solid $black;      
+        a {
+          color:$black;
+          font-size:11px;
+          line-height:10px;
+          padding-top:6px;
+        }
+        span {
+          float:left;
+          width:85%;
+          text-align:center;
+          margin:2px 0;       
+        }
+      }
+      
     }
     /* slide out secondary navigation */
     .secondary-nav {

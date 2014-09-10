@@ -45,8 +45,13 @@ $(document).ready(function () {
 					//click events for search history 'bars'
 					$('.pull-out .search-term').unbind('click').on('click', function(){
 						//toggle selected class on click
-						$(this).parent().parent().toggleClass('selected');
+						if (!$(this).parent().parent().hasClass('selected')) { 
+							$(this).parent().parent().toggleClass('selected');
+						}						
 						$('.presearch-field').not($(this).parent().parent()).removeClass('selected');
+						
+						$(this).toggleClass('current-search');
+						$('.search-term').not($(this)).removeClass('current-search');
 						
 						//setting the var to determine which search field is loaded
 						var id = $(this).attr("rel");
@@ -107,9 +112,19 @@ $(document).ready(function () {
 	// Functions that run 'inside' of the loaded content. These can be called as a callback of the AJAX load functions.
 	
 	function leftNavFunctions() {
+		//Getting the application number
+		var ep = 'EP13742066'
+		$('.ep').on('mouseenter mouseleave', function (){
+			$(this).parent().toggleClass('extend');		
+		});
+		$('.ep').mouseenter(function(){
+			$('.appNo').html(ep);
+		}).mouseleave(function(){
+			$('.appNo').html('EP...');
+		});
 		// Navigation arrows
 	    $('.arrow-back').parent().mouseenter(function () {
-	        $(this).css('width', '100px');
+	        $(this).css('width', '100px');	        
 	    }).mouseleave(function () {
 	        $(this).css('width', '50px');
 	    });
@@ -133,7 +148,7 @@ $(document).ready(function () {
 	        container: 'body'
 	    });
 	    //Right navigation click functions
-    	$('.nav-right ul li a').on('click', function () {
+    	$('.nav-right ul li a').unbind('click').on('click', function () {
     		
 			// Right hand (helpers) "fly out" menu
 	        $(this).toggleClass('selected');

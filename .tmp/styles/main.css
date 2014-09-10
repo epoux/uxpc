@@ -5344,7 +5344,6 @@ along with associated media queries.
       z-index: 0;
       height: 100%;
       position: absolute;
-      top: 10px;
       background: #eeeeee;
       border: 1px solid #cccccc;
       padding: 0 60px 20px 20px;
@@ -5712,7 +5711,12 @@ including the 'fly out menu', along with associated media queries.
       height: 50px;
       float: left;
       list-style: none;
-      overflow: hidden; }
+      overflow: hidden;
+      transition: all 0.4s ease;
+      -webkit-transition: all 0.4s ease;
+      -moz-transition: all 0.4s ease;
+      -ms-transition: all 0.4s ease;
+      -o-transition: all 0.4s ease; }
       .navbar-left ul.primary > li > a {
         display: block;
         float: left;
@@ -5738,6 +5742,23 @@ including the 'fly out menu', along with associated media queries.
         .navbar-left ul.primary > li > a[title="Settings"] {
           position: absolute;
           bottom: 0; }
+      .navbar-left ul.primary > li.extend {
+        width: 100px; }
+        .navbar-left ul.primary > li.extend a {
+          width: 100px; }
+      .navbar-left ul.primary > li.epNo {
+        background: white;
+        border: 5px solid black; }
+        .navbar-left ul.primary > li.epNo a {
+          color: black;
+          font-size: 11px;
+          line-height: 10px;
+          padding-top: 6px; }
+        .navbar-left ul.primary > li.epNo span {
+          float: left;
+          width: 85%;
+          text-align: center;
+          margin: 2px 0; }
     .navbar-left ul.primary .secondary-nav {
       position: absolute;
       display: block;
@@ -6127,6 +6148,8 @@ along with associated media queries.
     color: white;
     border: 1px solid #b3b3b3;
     cursor: pointer; }
+    .search-terms .search-term.current-search {
+      background: #00CC00; }
     .search-terms .search-term span.unread {
       position: absolute;
       left: 0;
@@ -6163,7 +6186,8 @@ padding: 20px;*/ }
   .search-content .col {
     float: left;
     margin: 0;
-    height: 100%; }
+    height: 100%;
+    overflow: auto; }
   .search-content .query-builder {
     padding: 15px;
     width: 30%;
