@@ -60,14 +60,20 @@
 					<a href="#"><span class="glyphicon glyphicon-chevron-left">&nbsp;</span></a>
 					<a href="#"><span class="glyphicon glyphicon-chevron-right">&nbsp;</span></a>
 				</div>					
-				<h4>Q13</h4>				
+				<h4>Q13</h4>
+				<a href="#" class="mark-query" data-toggle="tooltip" data-placement="right" title="Mark query">
+					<span class="glyphicon glyphicon-star-empty"></span>
+				</a>
+				<input type="text" class="query-term">				
 			</header>
 			<h4 data-toggle="collapse" data-target=".quick-search">Quick search</h4>
 			<section class="quick-search collapse in">							
 				<div class="search-param">
-					<p>Search on:</p>
+					<p class="small">Search on:</p>
 					<button class="btn btn-xs">G <span class="dismiss">x</span></button>
 					<button class="btn btn-xs">PL <span class="dismiss">x</span></button>
+					<button class="btn btn-xs btn-default">NPL <span class="dismiss">x</span></button>
+					<button class="btn btn-xs btn-default">D <span class="dismiss">x</span></button>
 				</div><!-- search param -->				
 				<div class="input-group">
 				  <input type="text" class="form-control" placeholder="Enter keywords">
@@ -77,16 +83,18 @@
 			<h4 data-toggle="collapse" data-target=".concept-search">Concept search</h4>
 			<section class="concept-search collapse in">			
 				<ul class="view">
-					<li class="active"><a href="#">List</a></li>
-					<li><a href="#">Table</a></li>
-					<li><a href="#">Command line</a></li>
+					<li class="active"><a title="list-view" href="#">List</a></li>
+					<li><a title="table-view" href="#">Table</a></li>
+					<li><a title="cl-view" href="#">Command line</a></li>
 				</ul>
-				<div class="list-view">
-					<div class="search-param">
-						<p>Search on:</p>
-						<button class="btn btn-xs">G <span class="dismiss">x</span></button>
-						<button class="btn btn-xs">PL <span class="dismiss">x</span></button>
-					</div><!-- search param -->
+				<div class="search-param">
+					<p class="small">Search on:</p>
+					<button class="btn btn-xs">G <span class="dismiss">x</span></button>
+					<button class="btn btn-xs">PL <span class="dismiss">x</span></button>
+					<button class="btn btn-xs btn-default">NPL <span class="dismiss">x</span></button>
+					<button class="btn btn-xs btn-default">D <span class="dismiss">x</span></button>
+				</div><!-- search param -->
+				<div class="concept-mode active list-view">				
 					<h6 data-toggle="collapse" data-target=".queryhighlights">Concepts</h6>
 					<div class="concept-group queryhighlights collapse in">	
 			    		<h5>Q | H</h5>
@@ -163,7 +171,32 @@
 			    		</ul>
 			 		</div><!-- concept group -->
 			  	</div><!-- list-view -->
+			  	<div class="concept-mode table-view">
+			  		<p>This is the table view (placeholder)</p>
+			  	</div>
+			  	<div class="concept-mode cl-view">
+			  		<p>This is the command line view (placeholder)</p>
+			  	</div>
 			</section><!-- /.concept-search -->
+			<footer>
+				<button class="btn btn-sm btn-default">GO</button>
+				<a href="#" class="pull-right small" data-toggle="modal" data-backdrop="false" data-target=".modal">See query syntax</a>
+				<div class="modal fade">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				        <h4 class="modal-title">Query syntax</h4>
+				      </div>
+				      <div class="modal-body">
+				        <p>VOICE W COMMAND?) 3D (QUERY OR SEARCH)' ,'(VOICE W
+						￼￼OR AUDI????) W COMMAND?)‘ '(VOICE W BROW+)' ((VOICE+ OR AUDI+ OR SPEECH+ OR READ+) 2D (PORTION OR SE[CT,X]ION OR
+						￼CHAPTER OR PART))' META_DATA)'</p>
+				      </div>
+				    </div><!-- /.modal-content -->
+				  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+			</footer>
 		</div><!-- /.query-builder -->
 		<div class="col query-filter">
 			

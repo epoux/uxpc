@@ -6187,95 +6187,157 @@ padding: 20px;*/ }
     float: left;
     margin: 0;
     height: 100%;
-    overflow: auto; }
+    overflow: hidden; }
   .search-content .query-builder {
     padding: 15px;
     width: 30%;
     background: white; }
 
-.query-builder header {
-  float: left;
-  clear: both;
-  width: 100%; }
-  .query-builder header .navigation {
-    float: left; }
-    .query-builder header .navigation a {
+.query-builder {
+  position: relative; }
+  .query-builder header {
+    float: left;
+    clear: both;
+    width: 100%; }
+    .query-builder header .navigation {
+      float: left; }
+      .query-builder header .navigation a {
+        margin: 0;
+        color: black; }
+        .query-builder header .navigation a:hover {
+          color: #cccccc; }
+    .query-builder header h4 {
+      float: left;
+      display: block;
       margin: 0;
+      padding: 0;
+      border: none;
+      width: auto; }
+    .query-builder header > a {
       color: black; }
-      .query-builder header .navigation a:hover {
-        color: #cccccc; }
-  .query-builder header h4 {
-    float: left;
-    display: block;
-    margin: 0;
-    padding: 0;
-    border: none;
-    width: auto; }
-.query-builder h4, .query-builder h6 {
-  float: left;
-  display: block;
-  width: 100%;
-  border-bottom: 1px dotted #eeeeee;
-  padding-bottom: 4px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  cursor: pointer; }
-.query-builder section {
-  float: left;
-  width: 100%; }
-  .query-builder section ul {
-    list-style: none;
-    padding: 0; }
-    .query-builder section ul li {
-      margin: 2px 0; }
-  .query-builder section h6 {
-    color: #a6a6a6; }
-    .query-builder section h6:before {
-      float: left;
-      content: "^";
-      font-size: 14px;
-      width: 15px;
-      height: 15px;
-      line-height: 15px; }
-  .query-builder section .search-param {
-    width: 100%;
-    float: left;
-    margin-bottom: 15px; }
-    .query-builder section .search-param p {
-      float: left;
-      margin: 1px 10px 0 0; }
-    .query-builder section .search-param button {
-      float: left;
-      min-width: 50px;
-      text-align: left;
-      margin-right: 5px;
+      .query-builder header > a .glyphicon {
+        margin-left: 10px; }
+        .query-builder header > a .glyphicon.marked {
+          color: #CCCC00; }
+      .query-builder header > a:hover {
+        text-decoration: none; }
+    .query-builder header input[type="text"] {
+      border: 1px solid transparent;
+      cursor: text;
       transition: all 0.4s ease;
       -webkit-transition: all 0.4s ease;
       -moz-transition: all 0.4s ease;
       -ms-transition: all 0.4s ease;
-      -o-transition: all 0.4s ease; }
-      .query-builder section .search-param button .dismiss {
-        float: right; }
-      .query-builder section .search-param button:hover {
-        background: #b3b3b3; }
-  .query-builder section ul.view {
-    margin: 0 0 15px 0;
-    padding: 0; }
-    .query-builder section ul.view li {
-      display: inline-block;
-      margin-right: 25px; }
-      .query-builder section ul.view li a {
-        color: #666666;
-        transition: all 0.5s ease;
-        -webkit-transition: all 0.5s ease;
-        -moz-transition: all 0.5s ease;
-        -ms-transition: all 0.5s ease;
-        -o-transition: all 0.5s ease; }
-        .query-builder section ul.view li a:hover {
-          text-decoration: none;
-          color: black; }
-      .query-builder section ul.view li.active {
-        border-bottom: 3px solid #666666; }
+      -o-transition: all 0.4s ease;
+      color: #cccccc;
+      padding: 2px 5px;
+      font-size: 11px;
+      font-style: italic; }
+      .query-builder header input[type="text"]:hover {
+        border: 1px solid #e6e6e6; }
+  .query-builder > h4, .query-builder h6 {
+    float: left;
+    display: block;
+    width: 100%;
+    border-bottom: 1px dotted #eeeeee;
+    padding-bottom: 4px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    cursor: pointer; }
+  .query-builder section {
+    float: left;
+    width: 100%; }
+    .query-builder section ul {
+      list-style: none;
+      padding: 0; }
+      .query-builder section ul li {
+        margin: 2px 0; }
+    .query-builder section h6 {
+      color: #a6a6a6; }
+      .query-builder section h6:before {
+        float: left;
+        content: "^";
+        font-size: 14px;
+        width: 15px;
+        height: 15px;
+        line-height: 15px; }
+    .query-builder section .search-param {
+      width: 100%;
+      float: left;
+      margin-bottom: 15px; }
+      .query-builder section .search-param p {
+        float: left;
+        margin: 1px 10px 0 0; }
+      .query-builder section .search-param button {
+        float: left;
+        min-width: 50px;
+        text-align: left;
+        margin-right: 5px;
+        transition: all 0.4s ease;
+        -webkit-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        -ms-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease; }
+        .query-builder section .search-param button .dismiss {
+          float: right; }
+        .query-builder section .search-param button:hover {
+          background: #b3b3b3; }
+        .query-builder section .search-param button.btn-default {
+          opacity: 0; }
+          .query-builder section .search-param button.btn-default:hover {
+            background: white;
+            border-color: #779ecb; }
+      .query-builder section .search-param.hover button.btn-default {
+        opacity: 1; }
+    .query-builder section ul.view {
+      margin: 0 0 15px 0;
+      padding: 0; }
+      .query-builder section ul.view li {
+        display: inline-block;
+        margin-right: 25px; }
+        .query-builder section ul.view li a {
+          color: #666666;
+          transition: all 0.5s ease;
+          -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+          -ms-transition: all 0.5s ease;
+          -o-transition: all 0.5s ease; }
+          .query-builder section ul.view li a:hover {
+            text-decoration: none;
+            color: black; }
+        .query-builder section ul.view li.active {
+          border-bottom: 3px solid #666666; }
+  .query-builder footer {
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    padding: 15px 0 30px 0;
+    background: white; }
+
+.concept-mode {
+  display: none;
+  position: relative;
+  float: left;
+  height: 585px;
+  width: 100%;
+  overflow: auto; }
+  .concept-mode.active {
+    display: block; }
+  .concept-mode.list-view {
+    float: left;
+    overflow: auto; }
+  .concept-mode.table-view, .concept-mode.cl-view {
+    background: #eeeeee;
+    position: relative; }
+    .concept-mode.table-view p, .concept-mode.cl-view p {
+      padding: 10px;
+      color: white;
+      background: #666666;
+      display: block;
+      position: absolute;
+      max-width: 230px;
+      top: 200px;
+      left: 50px; }
 
 .concept-group {
   float: left;

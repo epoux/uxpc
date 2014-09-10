@@ -68,6 +68,39 @@ $(document).ready(function () {
 						$('.pull-out').toggleClass('expand');
 						$('.dashboard').toggleClass('active').delay(400).fadeToggle(400);
 					});
+					//query builder functions
+					$('.query-builder .mark-query').click(function(){ // mark the star 
+						//change the star to yellow
+						$(this).find('.glyphicon').toggleClass('glyphicon-star glyphicon-star-empty').toggleClass('marked');
+						//change the title to reflect whether it is already marked
+						if ($('.query-builder .mark-query .glyphicon').hasClass('marked')){
+							$(this).attr({
+								"title": "Query is marked",
+								"data-original-title": "Query is marked"
+							});
+						} else {
+							$(this).attr({
+								"title": "Mark query",
+								"data-original-title": "Mark query"
+							});
+						}						
+					}).tooltip();
+					//search on sources
+					$('.search-param').on('mouseenter mouseleave', function(){
+						$(this).toggleClass('hover');
+					});
+					$('.search-param button').on('click', function(){
+						$(this).toggleClass('btn-default');
+					});
+					//switch between 'concept modes'
+					$('ul.view li a').click(function(e){
+						e.preventDefault();
+						var display = '.concept-mode' + '.' + $(this).attr('title');					
+						$(display).toggleClass('active');
+						$('.concept-mode').not(display).removeClass('active');
+						$(this).parent().toggleClass('active');
+						$(this).parent().parent().find('li').not($(this).parent()).removeClass('active');
+					});
 				});			
 			});
 			$('a[title="Application"]').on('click', function(){

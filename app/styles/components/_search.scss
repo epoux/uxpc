@@ -155,7 +155,7 @@ $pull-put-width : 300px;
     float:left;
     margin:0;
     height:100%;
-    overflow:auto;
+    overflow:hidden;
   }
   
   .query-builder {
@@ -167,7 +167,7 @@ $pull-put-width : 300px;
 }
 
 .query-builder {
-
+  position:relative;
   header {
     float:left;
     clear:both;
@@ -190,8 +190,32 @@ $pull-put-width : 300px;
       border:none;
       width:auto;
     }
+    &>a {
+      color:$black;
+      .glyphicon {
+        margin-left:10px;
+        &.marked {
+          color:#CCCC00;
+        }
+      }
+      &:hover {
+        text-decoration:none;        
+      }     
+    }
+    input[type="text"] {
+      border:1px solid transparent;
+      cursor:text;
+      @include transition(0.4s);
+      color: $mid-grey;
+      padding:2px 5px;
+      font-size:11px;
+      font-style:italic;
+      &:hover {
+        border:1px solid lighten($mid-grey, 10%);
+      }
+    }
   }//header
-  h4, h6 {
+  &>h4, h6 {
     float:left;
     display:block;
     width:100%;
@@ -242,6 +266,20 @@ $pull-put-width : 300px;
         &:hover {
           background:darken($mid-grey, 10%);
         }
+        &.btn-default {
+          opacity:0;
+          &:hover {
+            background:$white;
+            border-color:$light-blue;
+          }
+        }
+      }
+      &.hover {
+        button {
+            &.btn-default {
+            opacity:1;
+          }
+        }
       }
     }// .search param
     ul.view {
@@ -264,7 +302,44 @@ $pull-put-width : 300px;
       }
     }// ul.view
   }
+  footer {
+    position:absolute;
+    bottom:0;
+    width:90%;
+    padding:15px 0 30px 0;
+    background:$white;
+  }
 } //./query builder 
+.concept-mode {
+  display:none;
+  position: relative;
+  float: left;
+  height: 585px;
+  width: 100%;
+  overflow:auto;
+  &.active {
+    display:block;
+  }
+  &.list-view {
+    float:left;
+    overflow:auto;
+  }
+  &.table-view, &.cl-view {
+    background:$light-grey;
+    position:relative;
+    //temp class for placeholder text
+    p {
+      padding:10px;
+      color:$white;
+      background:$dark-grey;
+      display:block;
+      position:absolute;
+      max-width:230px;
+      top:200px;
+      left:50px;
+    }
+  }
+}
 
 .concept-group {
   float:left;
