@@ -101,6 +101,13 @@ $(document).ready(function () {
 						$(this).parent().toggleClass('active');
 						$(this).parent().parent().find('li').not($(this).parent()).removeClass('active');
 					});
+					//action group for concepts
+					$('.action-group a').tooltip({container: 'body'});
+					//add new search term
+					appendage = '<li><input type="checkbox"><input type="checkbox" class="checkbox-highlight"><span class="light-orange">Voice command</span><em class="version small">v3</em><span class="action-group"><a href="#" class="small" data-toggle="tooltip" data-placement="top" title="Hide"><span class="glyphicon glyphicon-eye-close"></span></a><a href="#" class="small" data-toggle="tooltip" data-placement="top" title="Edit"><span class="glyphicon glyphicon-pencil"></span></a><a href="#" class="small" data-toggle="tooltip" data-placement="top" title="Delete"><span class="glyphicon glyphicon-remove-circle"></span></a></span></li>';
+					$('.queryhighlights #add-new').on('click', function(){
+						$('ul.highlights-list.main').append(appendage);
+					});
 				});			
 			});
 			$('a[title="Application"]').on('click', function(){
