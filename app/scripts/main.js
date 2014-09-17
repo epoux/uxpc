@@ -4,6 +4,9 @@ $(document).ready(function () {
 	// Firing off all the loading functions
 	loadLeftNav();
 	loadRightNav();
+	$('.container-main').load('views/application.html', function(){
+		loadApplication();
+	})
 	
 	// COMPONENT LOADING
 	// Loading the appropriate html snippets into the content areas. These in turn call a set of functions 
@@ -14,107 +17,12 @@ $(document).ready(function () {
 			leftNavFunctions();
 			$('a[title="Search"]').on('click', function(){
 				$('.container-main').load('views/search.html', function(){
-					//load search history fly out
-					$('.pull-out a.pull').on('click', function(){
-						$('.pull-out').toggleClass('slide-in');
-						$('.container-main').toggleClass('nudge');
-						
-						if($('.search-content').hasClass('shrink')){
-							$('.search-content').toggleClass('shrink');
-							$('.pull-out').toggleClass('expand');
-							$('.dashboard').toggle(400);
-						}
-						
-						//var pop = ''
-						
-						pop = function(){
-								theid = $(this).attr("rel");
-								$('#pop').load('includes/popover.html');
-								return $('#pop').html();						
-							  }
-						
-						$('.search-term').popover({
-					    	placement:'right',
-					    	content: pop,
-					    	html:true,
-					    	trigger: 'focus hover',
-					    	container: 'body',
-					    	viewport: { selector: 'body', padding: 0 },
-					    });				    
-					});
-					//click events for search history 'bars'
-					$('.pull-out .search-term').unbind('click').on('click', function(){
-						//toggle selected class on click
-						if (!$(this).parent().parent().hasClass('selected')) { 
-							$(this).parent().parent().toggleClass('selected');
-						}						
-						$('.presearch-field').not($(this).parent().parent()).removeClass('selected');
-						
-						$(this).toggleClass('current-search');
-						$('.search-term').not($(this)).removeClass('current-search');
-						
-						//setting the var to determine which search field is loaded
-						var id = $(this).attr("rel");
-						var url = 'includes/searchresults.html #' + id;
-						//load/'replay' the search  
-						$('.search-content').load(url, function(){
-							//additional functions here						
-						});
-						
-					});
-					//load dashboard
-					$('#dashboard').on('click', function(){
-						$('.search-content').toggleClass('shrink');
-						$('.pull-out').toggleClass('expand');
-						$('.dashboard').toggleClass('active').delay(400).fadeToggle(400);
-					});
-					//query builder functions
-					$('.query-builder .mark-query').click(function(){ // mark the star 
-						//change the star to yellow
-						$(this).find('.glyphicon').toggleClass('glyphicon-star glyphicon-star-empty').toggleClass('marked');
-						//change the title to reflect whether it is already marked
-						if ($('.query-builder .mark-query .glyphicon').hasClass('marked')){
-							$(this).attr({
-								"title": "Query is marked",
-								"data-original-title": "Query is marked"
-							});
-						} else {
-							$(this).attr({
-								"title": "Mark query",
-								"data-original-title": "Mark query"
-							});
-						}						
-					}).tooltip();
-					//search on sources
-					$('.search-param').on('mouseenter mouseleave', function(){
-						$(this).toggleClass('hover');
-					});
-					$('.search-param button').on('click', function(){
-						$(this).toggleClass('btn-default');
-					});
-					//switch between 'concept modes'
-					$('ul.view li a').click(function(e){
-						e.preventDefault();
-						var display = '.concept-mode' + '.' + $(this).attr('title');					
-						$(display).toggleClass('active');
-						$('.concept-mode').not(display).removeClass('active');
-						$(this).parent().toggleClass('active');
-						$(this).parent().parent().find('li').not($(this).parent()).removeClass('active');
-					});
-					//action group for concepts
-					$('.action-group a').tooltip({container: 'body'});
-					//add new search term
-					appendage = '<li><input type="checkbox"><input type="checkbox" class="checkbox-highlight"><span class="light-orange">Voice command</span><em class="version small">v3</em><span class="action-group"><a href="#" class="small" data-toggle="tooltip" data-placement="top" title="Hide"><span class="glyphicon glyphicon-eye-close"></span></a><a href="#" class="small" data-toggle="tooltip" data-placement="top" title="Edit"><span class="glyphicon glyphicon-pencil"></span></a><a href="#" class="small" data-toggle="tooltip" data-placement="top" title="Delete"><span class="glyphicon glyphicon-remove-circle"></span></a></span></li>';
-					$('.queryhighlights #add-new').on('click', function(){
-						$('ul.highlights-list.main').append(appendage);
-					});
-				});			
+					searchFunctions();
+				});		
 			});
 			$('a[title="Application"]').on('click', function(){
 				$('.container-main').load('views/application.html', function(){
-					pageLoad();
-					loadHeader();
-					loadHighlightsNavigation();				
+					loadApplication();									
 				});
 			});
 			$('a[title="Tags & viewer"]').on('click', function(){
@@ -133,21 +41,6 @@ $(document).ready(function () {
 		});
 	}
 	
-	function loadHeader(){ // Filters (header) area 
-		$('.header').load('components/header.html', function(){
-			headerFunctions();
-		});
-	}
-	
-	function loadHighlightsNavigation(){ // Highlights/navigation and VIN bar area 
-		$('.highlights-annotations-bar').load('components/highlights-annotations.html', function(){
-			pageLoad();
-			switchView();
-			viewer();
-			//something
-		});
-	}
-
 	// COMPONENT FUNCTIONS
 	// Functions that run 'inside' of the loaded content. These can be called as a callback of the AJAX load functions.
 	
@@ -178,6 +71,10 @@ $(document).ready(function () {
 	    //Restore container to original position (centered) if it has been changed
 	    $('.navbar-left ul li').not('a[title="search"]').on('click', function(){
 	    	$('.container-main').removeClass('nudge');
+	    });
+	    
+	    $('.navbar-left ul li').on('click', function(){
+	    	$('.container-main').removeClass('dual-screen');
 	    });
 
 	}//END left nav functions
@@ -218,74 +115,123 @@ $(document).ready(function () {
     	})
     }//END right nav functions
     
-    function headerFunctions(){
-    	// Change to dual view
-	    $('#comm-draft, button.close').click(function () {
-	        $('.container-main').toggleClass('dual-screen');
-	        if($('.container-main').hasClass('dual-screen')){
-		    	$('.annotation .glyphicon').popover({
-		    		placement:'left',
-		    		container: 'body',
-		    		title: 'Clarity – Claim 20',
-		    		content: 'The term particular criteria used in claim 20 is vague and unclear'    		
-		    	});
-		    }
-	    });
-	    
-	    // Destroy popover on dual screen close
-	    $('button.close').click(function(){
-	    	$('body').popover('destroy');
-	    });
-	    
-	    // Toggle/switch for titles and filters
-	    $('.btn-multi-toggle .btn, .btn-toggle .btn').click(function (e) {
-	        $(this).toggleClass('btn-primary active');
-	        $(this).parent().find('.btn').not(this).addClass('btn-default').removeClass('btn-primary active');
-	        e.preventDefault();
-	    });
-	
-	    // Custom dropdown for filters
-	    $('.filter-trigger').click(function (event) {
-	        $('.dropdown-filter-group').toggleClass('visible');
-	        //stop propogation to the doc body
-	        event.stopPropagation();
-	    });
-	    $(document).click(function (event) { //click outside window
-	    	
-	        if (!$(event.target).closest('.dropdown-filter-group').length) {
-	            if ($('.dropdown-filter-group').is(':visible')) {
-	                $('.dropdown-filter-group').toggleClass('visible');
-	            }
-	        }
-	    });
-
-    } //END header functions
-    
-    
-    
-    //Switch between 'page layout' and 'screen reading'
-    function switchView() {
-    	$('.trigger-page-layout').on('click', function(){
-	    	// Change the title of the dropdown that triggers the switch
-	    	$(this).parent().parent().parent().find('.dropdown-toggle').html('<span class="glyphicon glyphicon-list"></span> Page layout <b class="caret"></b>');
-	    	// Display or hide
-	    	$('.page-layout').show();
-	    	$('.screen-reading').hide();
-	    });
-	    
-	    $('.trigger-screen-reading').on('click', function(){
-	    	// Change the title of the dropdown that triggers the switch
-	    	$(this).parent().parent().parent().find('.dropdown-toggle').html('<span class="glyphicon glyphicon-eye-open"></span> Screen reading <b class="caret"></b>');
-	    	$('.screen-reading').show();
-	    	$('.page-layout').hide();
-	    });
-    }//END function switchView()
-    
-    function viewer() {
-    	var docHeight = $('#view-screen-reading').height();
-    	console.log('docHeight: ' + docHeight);
-    }
-	    
+    function searchFunctions() {
+		//load search history fly out
+		$('.pull-out a.pull').on('click', function(){
+			$('.pull-out').toggleClass('slide-in');
+			$('.container-main').toggleClass('nudge');
+			
+			if($('.search-content').hasClass('shrink')){
+				$('.search-content').toggleClass('shrink');
+				$('.pull-out').toggleClass('expand');
+				$('.dashboard').toggle(400);
+			}
+			
+			//var pop = ''
+			
+			pop = function(){
+					theid = $(this).attr("rel");
+					$('#pop').load('includes/popover.html');
+					return $('#pop').html();						
+				  }
+			
+			$('.search-term').popover({
+		    	placement:'right',
+		    	content: pop,
+		    	html:true,
+		    	trigger: 'focus hover',
+		    	container: 'body',
+		    	viewport: { selector: 'body', padding: 0 },
+		    });				    
+		});
+		//click events for search history 'bars'
+		$('.pull-out .search-term').unbind('click').on('click', function(){
+			//toggle selected class on click
+			if (!$(this).parent().parent().hasClass('selected')) { 
+				$(this).parent().parent().toggleClass('selected');
+			}						
+			$('.presearch-field').not($(this).parent().parent()).removeClass('selected');
+			
+			$(this).toggleClass('current-search');
+			$('.search-term').not($(this)).removeClass('current-search');
+			
+			//setting the var to determine which search field is loaded
+			var id = $(this).attr("rel");
+			var url = 'includes/searchresults.html #' + id;
+			//load/'replay' the search  
+			$('.search-content').load(url, function(){
+				//additional functions here						
+			});
+			
+		});
+		//load dashboard
+		$('#dashboard').on('click', function(){
+			$('.search-content').toggleClass('shrink');
+			$('.pull-out').toggleClass('expand');
+			$('.dashboard').toggleClass('active').delay(400).fadeToggle(400);
+		});
+		//query builder functions
+		$('.query-builder .mark-query').click(function(){ // mark the star 
+			//change the star to yellow
+			$(this).find('.glyphicon').toggleClass('glyphicon-star glyphicon-star-empty').toggleClass('marked');
+			//change the title to reflect whether it is already marked
+			if ($('.query-builder .mark-query .glyphicon').hasClass('marked')){
+				$(this).attr({
+					"title": "Query is marked",
+					"data-original-title": "Query is marked"
+				});
+			} else {
+				$(this).attr({
+					"title": "Mark query",
+					"data-original-title": "Mark query"
+				});
+			}						
+		}).tooltip();
+		//search on sources
+		$('.search-param').on('mouseenter mouseleave', function(){
+			$(this).toggleClass('hover');
+		});
+		$('.search-param button').on('click', function(){
+			$(this).toggleClass('btn-default');
+		});
+		//switch between 'concept modes'
+		$('ul.view li a').click(function(e){
+			e.preventDefault();
+			var display = '.concept-mode' + '.' + $(this).attr('title');					
+			$(display).toggleClass('active');
+			$('.concept-mode').not(display).removeClass('active');
+			$(this).parent().toggleClass('active');
+			$(this).parent().parent().find('li').not($(this).parent()).removeClass('active');
+		});
+		//action group for concepts
+		$('.action-group a').tooltip({container: 'body'});
+		//add new search term
+		appendage = '<li><input type="checkbox">&nbsp;<input type="checkbox" class="checkbox-highlight"><span><input class="new" style="width:100%;"></input></span><span class="picker"><span class="caret"></span><ul style="display: block;"><li class="light-orange">&nbsp;</li><li class="light-green">&nbsp;</li><li class="light-yellow">&nbsp;</li><li class="light-red">&nbsp;</li><li class="light-blue">&nbsp;</li><li class="light-purple">&nbsp;</li></ul></span></li>';
+		
+		$('.queryhighlights #add-new').on('click', function(){
+			$('ul.highlights-list.main').append(appendage).each(function(){
+				$('.picker ul').hide();
+				$('.picker span.caret').unbind('click').on('click', function(){
+					$('.picker ul').toggle();
+				});
+			});
+			$('.new').fadeIn(800);
+		});
+		//hide the term with 'hide' button
+		$('.action-group a[data-original-title="Hide"]').on('click', function(){												
+			//$(this).tooltip('destroy');
+			$(this).parent().parent().hide();
+		});
+		$('#show-hidden').on('click', function(){
+			$('.highlights-list.main li').show();
+		})
+		//remove term with 'delete' button
+		$('.action-group a[data-original-title="Delete"]').on('click', function(){												
+			$(this).tooltip('destroy');
+			$(this).parent().parent().remove();
+		});
+	}
+	   
 	//GENERAL 
 
 });

@@ -116,9 +116,9 @@ aand related media queries.
 
     &.dual-screen { /* everything inside here modifies the dual screen view */
 
-      .screen-one {
+      .screen-one, .screen-two {
         float:left;
-        width:60%;
+        width:50%;
         .annotations {
           .annotation {
             span {
@@ -135,12 +135,12 @@ aand related media queries.
       }
 
       .screen-two {
-        float:left;
         display: block;
-        width:40%;
         height:100%;
         background:#dedede;
-
+        img {
+          width:95%;
+        }
         header {
           float: left;
           width: 100%;
@@ -158,8 +158,10 @@ aand related media queries.
         .comms {
           float: left;
           background: white;
-          height: 100%;
-          width: 95%; /* This will vary depending on final grid/width */
+          height: 94%;
+          width: 96.5%;
+          overflow:auto;
+          padding: 15px 0;
           margin: 0 15px 15px 15px;
         }
 

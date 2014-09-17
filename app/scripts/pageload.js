@@ -173,7 +173,7 @@ function pageLoad(){
 		    	title: 'Figure 3',
 		    	container: 'body',
 		    	viewport: { selector: 'body', padding: 0 },
-		    	template: '<div class="popover wide" role="tooltip" style="margin-left:-220px;"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+		    	template: '<div class="popover wide" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
 		    });
 		    //Annotation hover
 		    $('.annotation').on('mouseenter mouseleave', function () {

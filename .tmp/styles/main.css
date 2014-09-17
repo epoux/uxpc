@@ -5239,8 +5239,8 @@ body {
     /* constraining the max viewable area for accessibility */ }
     .container-main.dual-screen {
       /* everything inside here modifies the dual screen view */
-      width: 90%;
-      max-width: 1600px; }
+      width: 95%;
+      max-width: 1800px; }
 
   /* Remove the padding set earlier */
   .header,
@@ -5655,21 +5655,21 @@ aand related media queries.
       height: 100%; }
     .container-main.dual-screen {
       /* everything inside here modifies the dual screen view */ }
-      .container-main.dual-screen .screen-one {
+      .container-main.dual-screen .screen-one, .container-main.dual-screen .screen-two {
         float: left;
-        width: 60%; }
-        .container-main.dual-screen .screen-one .annotations .annotation span {
+        width: 50%; }
+        .container-main.dual-screen .screen-one .annotations .annotation span, .container-main.dual-screen .screen-two .annotations .annotation span {
           float: right; }
-        .container-main.dual-screen .screen-one .annotations .annotation h5, .container-main.dual-screen .screen-one .annotations .annotation p {
+        .container-main.dual-screen .screen-one .annotations .annotation h5, .container-main.dual-screen .screen-one .annotations .annotation p, .container-main.dual-screen .screen-two .annotations .annotation h5, .container-main.dual-screen .screen-two .annotations .annotation p {
           display: none; }
-        .container-main.dual-screen .screen-one .secondary-content {
+        .container-main.dual-screen .screen-one .secondary-content, .container-main.dual-screen .screen-two .secondary-content {
           display: none; }
       .container-main.dual-screen .screen-two {
-        float: left;
         display: block;
-        width: 40%;
         height: 100%;
         background: #dedede; }
+        .container-main.dual-screen .screen-two img {
+          width: 95%; }
         .container-main.dual-screen .screen-two header {
           float: left;
           width: 100%;
@@ -5683,9 +5683,10 @@ aand related media queries.
         .container-main.dual-screen .screen-two .comms {
           float: left;
           background: white;
-          height: 100%;
-          width: 95%;
-          /* This will vary depending on final grid/width */
+          height: 94%;
+          width: 96.5%;
+          overflow: auto;
+          padding: 15px 0;
           margin: 0 15px 15px 15px; } }
 /* MAIN NAVIGATION style sheet
 
@@ -5827,7 +5828,6 @@ as well as general styles and typography
 */
 .contextual {
   position: absolute;
-  z-index: 0;
   right: -65px;
   top: 0; }
   .contextual .btn-group-vertical ul.push-right {
@@ -6223,6 +6223,8 @@ padding: 20px;*/ }
         text-decoration: none; }
     .query-builder header input[type="text"] {
       border: 1px solid transparent;
+      -webkit-appearance: none;
+      -moz-appearance: none;
       cursor: text;
       transition: all 0.4s ease;
       -webkit-transition: all 0.4s ease;
@@ -6346,25 +6348,47 @@ padding: 20px;*/ }
 ul.highlights-list {
   list-style: none;
   padding: 0; }
-  ul.highlights-list li {
+  ul.highlights-list > li {
     padding: 4px 0;
     transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease; }
-    ul.highlights-list li:hover {
+    ul.highlights-list > li:hover {
       background: #fbfbfb; }
-      ul.highlights-list li:hover .action-group {
+      ul.highlights-list > li:hover .action-group {
         opacity: 1; }
-    ul.highlights-list li input[type="checkbox"] {
-      margin-right: 5px; }
-    ul.highlights-list li > span:first-of-type {
+    ul.highlights-list > li input[type="checkbox"] {
+      margin-right: 5px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 10px;
+      height: 10px;
+      border: 1px solid #cccccc; }
+    ul.highlights-list > li input[class="new"] {
+      margin-right: 5px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      border: 1px solid #cccccc; }
+    ul.highlights-list > li .picker {
+      float: right;
+      display: block; }
+      ul.highlights-list > li .picker ul {
+        border: 1px solid #cccccc;
+        padding: 0 0 0 2px;
+        height: 18px; }
+        ul.highlights-list > li .picker ul li {
+          width: 12px;
+          height: 12px;
+          display: inline-block;
+          margin-right: 2px; }
+    ul.highlights-list > li > span:first-of-type {
       min-width: 55%;
       display: inline-block;
       padding: 2px 0 2px 5px;
       cursor: pointer; }
-    ul.highlights-list li em.version {
+    ul.highlights-list > li em.version {
       color: #cccccc;
       margin-left: 5px; }
   ul.highlights-list.second li {

@@ -128,7 +128,7 @@ body {
 
     &.dual-screen {
       /* everything inside here modifies the dual screen view */
-      width: $container-main-width + 10%;
+      width: $container-main-width + 15%;
       max-width: $container-dual-view-max-width;
     }
   }

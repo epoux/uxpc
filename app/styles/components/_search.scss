@@ -204,6 +204,8 @@ $pull-put-width : 300px;
     }
     input[type="text"] {
       border:1px solid transparent;
+      -webkit-appearance:none;
+      -moz-appearance:none;
       cursor:text;
       @include transition(0.4s);
       color: $mid-grey;
@@ -349,7 +351,7 @@ $pull-put-width : 300px;
 ul.highlights-list {
   list-style:none;
   padding:0;
-  li {
+  &>li {
     padding:4px 0;
     @include transition(0.5s);
     &:hover {
@@ -360,6 +362,32 @@ ul.highlights-list {
     }
     input[type="checkbox"] {
       margin-right:5px;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      width:10px;
+      height:10px;
+      border:1px solid $mid-grey;
+    }
+    input[class="new"] {
+      margin-right:5px;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      border:1px solid $mid-grey;
+    }
+    .picker {
+      float:right;
+      display:block;
+      ul{
+        border:1px solid $mid-grey;
+        padding:0 0 0 2px;
+        height:18px;
+        li {
+          width:12px;
+          height:12px;
+          display:inline-block;
+          margin-right:2px;
+        }
+      }     
     }
     &>span:first-of-type {
       min-width:55%;
