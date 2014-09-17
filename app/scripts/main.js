@@ -230,10 +230,9 @@ $(document).ready(function () {
 			$(this).tooltip('destroy');
 			$(this).parent().parent().remove();
 		});
-	}
+	}// END search functions
 	   
-	//GENERAL
-	//Page loading (dummy AJAX loading of views)  
+	//APPLICATION Functions
 	function loadApplication(){
 		
 		//Define variables
