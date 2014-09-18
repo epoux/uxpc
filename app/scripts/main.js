@@ -5,6 +5,7 @@ $(document).ready(function () {
 	loadLeftNav();
 	loadRightNav();
 	$('.container-main').load('views/application.html', function(){
+		//This is to load the 'Application' view as the default when the page loads.
 		loadApplication();
 	})
 	
@@ -15,6 +16,7 @@ $(document).ready(function () {
 	function loadLeftNav(){ // Left (main) navigation
 		$('.navbar-left').load('components/nav-left.html', function(){
 			leftNavFunctions();
+			//Load appropriate content based on main navigation selection
 			$('a[title="Search"]').on('click', function(){
 				$('.container-main').load('views/search.html', function(){
 					searchFunctions();
@@ -127,8 +129,6 @@ $(document).ready(function () {
 				$('.dashboard').toggle(400);
 			}
 			
-			//var pop = ''
-			
 			pop = function(){
 					theid = $(this).attr("rel");
 					$('#pop').load('includes/popover.html');
@@ -151,7 +151,7 @@ $(document).ready(function () {
 				$(this).parent().parent().toggleClass('selected');
 			}						
 			$('.presearch-field').not($(this).parent().parent()).removeClass('selected');
-			
+			//toggle selected class on individual search term
 			$(this).toggleClass('current-search');
 			$('.search-term').not($(this)).removeClass('current-search');
 			
@@ -160,7 +160,7 @@ $(document).ready(function () {
 			var url = 'includes/searchresults.html #' + id;
 			//load/'replay' the search  
 			$('.search-content').load(url, function(){
-				//additional functions here						
+				//additional functions will go here						
 			});
 			
 		});
@@ -170,7 +170,8 @@ $(document).ready(function () {
 			$('.pull-out').toggleClass('expand');
 			$('.dashboard').toggleClass('active').delay(400).fadeToggle(400);
 		});
-		//query builder functions
+		//QUERY BUILDER functions
+		//all funtionality pertaining to the query builder
 		$('.query-builder .mark-query').click(function(){ // mark the star 
 			//change the star to yellow
 			$(this).find('.glyphicon').toggleClass('glyphicon-star glyphicon-star-empty').toggleClass('marked');
@@ -235,10 +236,6 @@ $(document).ready(function () {
 	//APPLICATION Functions
 	function loadApplication(){
 		
-		//Define variables
-		secondary = ""
-		currClass = ""
-		
 		//Load components
 		loadHeader();
 		loadHighlightsNavigation();
@@ -263,12 +260,12 @@ $(document).ready(function () {
 		    $('.contextual ul>li a').click(function () {
 		        $('.container-main').addClass('dual-screen');
 		        var title = $(this).text();
-		        var Str = title.replace(/\s+/g, '');
+		        var Str = title.replace(/\s+/g, '');//removes white space
 		        var url = 'includes/' + Str + '.html'
 	
 		        $('.content-secondary-wrapper header h5').html(title);
 		        $('.comms').load(url, function(){
-		        	//function
+		        	//callback function will be needed here
 		        });
 		        if($('.container-main').hasClass('dual-screen')){
 			    	$('.annotation .glyphicon').popover({
@@ -282,20 +279,17 @@ $(document).ready(function () {
 		    //Close dual view
 		    $('button.close').click(function () {
 		        $('.container-main').removeClass('dual-screen');
-		    });
-		    
+		    });		    
 		    // Destroy popover on dual screen close
 		    $('button.close').click(function(){
-		    	$('body').popover('destroy');
-		    });
-		    
+		    	$('.annotation .glyphicon').popover('destroy');
+		    });		    
 		    // Toggle/switch for titles and filters
 		    $('.btn-multi-toggle .btn, .btn-toggle .btn').click(function (e) {
 		        $(this).toggleClass('btn-primary active');
 		        $(this).parent().find('.btn').not(this).addClass('btn-default').removeClass('btn-primary active');
 		        e.preventDefault();
-		    });
-		
+		    });		
 		    // Custom dropdown for filters
 		    $('.filter-trigger').click(function (event) {
 		        $('.dropdown-filter-group').toggleClass('visible');
@@ -340,14 +334,10 @@ $(document).ready(function () {
 				});
 							
 			});
-			
-			$('.content-main-wrapper').scroll(function(){
-				//$('#viewer-claims').animate({"marginTop": 100}, "slow" );
-			})
 			//Popover images on thumbnails    
 		    var image = '<img src="images/popover-diagram.jpg">'
 		    $('.popover-image').popover({
-		    	placement:'bottom',
+		    	placement:'left',
 		    	content: image,
 		    	html:true,
 		    	trigger: 'click focus',
@@ -364,16 +354,14 @@ $(document).ready(function () {
 		    });
 		    // Popovers
 			$('.markers button, .markers a').popover();	
-		}
-	
+		}	
 		//Load 'Claims' initially
 		function init() {
 			$('#view-screen-reading').load('includes/claims.html', function(){
 				loadAppFunctions();		
 			});
 		}
-		init();
-		
+		init();		
 		//Load new content on click
 		function loadNew() {
 			$('.highlights-filter a').on('click', function(){
@@ -384,8 +372,7 @@ $(document).ready(function () {
 		    		loadAppFunctions();  				    
 		    	});
 		    });
-		}
-		
+		}		
 		//Switch between 'page layout' and 'screen reading'
 	    function switchView() {
 	    	$('.trigger-page-layout').on('click', function(){
